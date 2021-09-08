@@ -4,7 +4,7 @@ import React, { Component } from 'react'
     render() {
         return (
             <header>
-                
+                <p>This is the header</p>
             </header>
         )
     }

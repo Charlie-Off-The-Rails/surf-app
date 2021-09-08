@@ -4,7 +4,7 @@ import React, { Component } from 'react'
     render() {
         return (
             <footer>
-                
+                <p>This is the footer</p>
             </footer>
         )
     }
