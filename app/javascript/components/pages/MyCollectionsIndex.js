@@ -5,6 +5,7 @@ import React, { Component } from 'react'
         return (
             <>
                 <p>This is the collections index page!</p>
+                
             </>
         )
     }
