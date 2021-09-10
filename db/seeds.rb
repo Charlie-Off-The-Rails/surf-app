@@ -43,7 +43,8 @@ spot_attributes = [
             longitude: -117.255225, 
             wind_direction: 135, 
             swell_direction: 293, 
-            surf_height: 2.0, 
+            surf_height_min: 3.0, 
+            surf_height_max: 8.0,
             tide: 'low'
         },
         { 
@@ -55,7 +56,8 @@ spot_attributes = [
             longitude: -117.259056, 
             wind_direction: 67, 
             swell_direction: 270, 
-            surf_height: 2.0, 
+            surf_height_min: 2.0, 
+            surf_height_max: 6.0,
             tide: 'low'
         },
         { 
@@ -67,7 +69,8 @@ spot_attributes = [
             longitude: -117.257337, 
             wind_direction: 45, 
             swell_direction: 293, 
-            surf_height: 2.0, 
+            surf_height_min: 4.0, 
+            surf_height_max: 12.0,
             tide: 'low'
         },
         { 
@@ -79,7 +82,8 @@ spot_attributes = [
             longitude: -117.186886, 
             wind_direction: 35, 
             swell_direction: 200, 
-            surf_height: 2.0, 
+            surf_height_min: 3.0, 
+            surf_height_max: 6.0,
             tide: 'med'
         },
         { 
@@ -91,7 +95,8 @@ spot_attributes = [
             longitude: -116.960324, 
             wind_direction: 90, 
             swell_direction: 230, 
-            surf_height: 2.0, 
+            surf_height_min: 3.0,
+            surf_height_max: 6.0, 
             tide: 'med'
         },
         { 
@@ -103,7 +108,8 @@ spot_attributes = [
             longitude: -116.884867, 
             wind_direction: 35, 
             swell_direction: 290, 
-            surf_height: 2.0, 
+            surf_height_min: 3.0, 
+            surf_height_max: 8.0,
             tide: 'high'
         },
 
