@@ -5,3 +5,125 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+user = User.create(
+    { 
+        user_name: 'Test Surfer', 
+        email: 'testsurfer@gmail.com', 
+        password: '123456', 
+        password_confirmation: '123456'
+    })
+
+
+collection = Collection.create(
+    { 
+        name:'Saturday', 
+        description: 'My favorite spots for Saturday', 
+        priority: 5 ,
+        # added user_id attribute
+        user_id: user.id
+    })
+
+
+# will need another migration to redefine surf_height as minimum_surf_height and add a new column as max_surf_height
+
+# we are comparing the tide type. looking into a good way to compare tide data. think about making it a array. 
+
+# looking into a math formulat to figure out azimuth range ex: 350 to 10 (ex: NW to NE)
+
+# treating easy_parking as easy_access (true or false)
+
+spot_attributes = [ 
+        { 
+            name: 'Scripps', 
+            description: 'Surf spot for Scripps', 
+            easy_parking: true, 
+            bottom: 'sand', 
+            latitude: 32.865747, 
+            longitude: -117.255225, 
+            wind_direction: 135, 
+            swell_direction: 293, 
+            surf_height: 2.0, 
+            tide: 'low'
+        },
+        { 
+            name: 'Pacific Beach', 
+            description: 'Surf spot for PB', 
+            easy_parking: true, 
+            bottom: 'sand', 
+            latitude: 32.79817, 
+            longitude: -117.259056, 
+            wind_direction: 67, 
+            swell_direction: 270, 
+            surf_height: 2.0, 
+            tide: 'low'
+        },
+        { 
+            name: 'Sunset Cliffs', 
+            description: 'Surf spot for Sunst Cliffs', 
+            easy_parking: false, 
+            bottom: 'rock', 
+            latitude: 32.719421, 
+            longitude: -117.257337, 
+            wind_direction: 45, 
+            swell_direction: 293, 
+            surf_height: 2.0, 
+            tide: 'low'
+        },
+        { 
+            name: 'Coronado Beach', 
+            description: 'Surf spot for Coronado Beach', 
+            easy_parking: true, 
+            bottom: 'sand', 
+            latitude: 32.683467, 
+            longitude: -117.186886, 
+            wind_direction: 35, 
+            swell_direction: 200, 
+            surf_height: 2.0, 
+            tide: 'med'
+        },
+        { 
+            name: 'Las Gaviotas', 
+            description: 'Surf spot for Las Gaviotas', 
+            easy_parking: true, 
+            bottom: 'rock', 
+            latitude: 32.251866, 
+            longitude: -116.960324, 
+            wind_direction: 90, 
+            swell_direction: 230, 
+            surf_height: 2.0, 
+            tide: 'med'
+        },
+        { 
+            name: 'San Miguel', 
+            description: 'Surf spot for San Miguel', 
+            easy_parking: true, 
+            bottom: 'rock', 
+            latitude: 32.088172, 
+            longitude: -116.884867, 
+            wind_direction: 35, 
+            swell_direction: 290, 
+            surf_height: 2.0, 
+            tide: 'high'
+        },
+
+    ]
+
+spot_attributes.each do |value|
+    Spot.create value
+    puts "creating #{value}"
+end
+
+
+collection_spot_1 = CollectionSpot.create( { collection_id: 1, spot_id: 1} )
+
+
+
+#  if we want a fresh database
+#   $ rails db:reset 
+#  command above is the same as running:
+#   $ rails db:drop
+#   $ rails db:create
+#   $ rails db:migrate
+#   $ rails db:seed
+  

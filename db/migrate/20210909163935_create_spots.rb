@@ -7,8 +7,8 @@ class CreateSpots < ActiveRecord::Migration[6.1]
       t.string :bottom
       t.decimal :latitude
       t.decimal :longitude
-      t.string :wind_direction
-      t.string :swell_direction
+      t.integer :wind_direction
+      t.integer :swell_direction
       t.decimal :surf_height
       t.string :tide
 

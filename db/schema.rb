@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2021_09_09_164646) do
     t.string "bottom"
     t.decimal "latitude"
     t.decimal "longitude"
-    t.string "wind_direction"
-    t.string "swell_direction"
+    t.integer "wind_direction"
+    t.integer "swell_direction"
     t.decimal "surf_height"
     t.string "tide"
     t.datetime "created_at", precision: 6, null: false
