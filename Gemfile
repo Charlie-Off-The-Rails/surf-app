@@ -54,3 +54,5 @@ gem "bootstrap", "~> 5.1"
 gem "rspec-rails", "~> 5.0"
 
 gem "devise", "~> 4.8"
+
+gem "pry", "~> 0.14.1"
