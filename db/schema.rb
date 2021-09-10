@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_230235) do
+ActiveRecord::Schema.define(version: 2021_09_10_045443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collection_spots", force: :cascade do |t|
+    t.integer "collection_id"
+    t.integer "spot_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "priority"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "easy_parking"
+    t.string "bottom"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.integer "wind_direction"
+    t.integer "swell_direction"
+    t.decimal "surf_height_min"
+    t.string "tide"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "surf_height_max"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

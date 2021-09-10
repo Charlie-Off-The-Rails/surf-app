@@ -1,0 +1,2 @@
+class CollectionSpotsController < ApplicationController
+end
