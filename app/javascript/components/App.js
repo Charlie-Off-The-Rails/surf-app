@@ -17,10 +17,30 @@ import {
 } from "react-router-dom"
 
 class App extends Component {
+  constructor(props){
+    super(props)
+      this.state = {
+        collections: [] 
+      }
+    
+  }
+
+  readCollections = async () =>{ 
+    const response = await fetch("/collections")
+    const result = await response.json()
+    this.setState({collections: result})
+  }
+
+  componentDidMount(){
+    this.readCollections()
+  }
+  
   render() {
+    console.log(this.state.collections)
+    const { logged_in, new_user_route, sign_in_route, sign_out_route, current_user } = this.props
     return (
       <Router>
-        <Header />
+        <Header logged_in={logged_in} new_user_route={new_user_route} sign_in_route={sign_in_route} sign_out_route={sign_out_route} current_user={current_user}/>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/surfspotindex" component={SurfSpotIndex} />
