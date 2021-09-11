@@ -21,6 +21,9 @@ import { Link } from 'react-router-dom';
                                     <li>
                                          {`Priority: ${collection.priority}.`} 
                                     </li>
+                                    <a href={`/mycollectionsshow/${collection.id}`}> 
+                                        Details 
+                                    </a>
                                 </ul>
                             </div>
                          )

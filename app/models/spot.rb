@@ -4,3 +4,6 @@ class Spot < ApplicationRecord
     validates :name,:description,:easy_parking,:latitude,:longitude, presence: true
     validates :bottom, inclusion: {in: ["sand","rock"]}
 end
+
+
+# should a Spot belongs_to to collection, through: spot_collections?

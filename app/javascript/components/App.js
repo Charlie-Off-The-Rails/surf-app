@@ -26,15 +26,16 @@ class App extends Component {
     
   }
 
+  // was getting an unexpected 
+  componentDidMount(){
+    this.props.logged_in ? this.readCollections() : console.log(this.state.collections)
+  }
+
   // should we have a catch block for potential errors?
   readCollections = async () =>{ 
     const response = await fetch("/collections")
     const result = await response.json()
     this.setState({collections: result})
-  }
-
-  componentDidMount(){
-    this.readCollections()
   }
   
   render() {
@@ -68,11 +69,18 @@ class App extends Component {
               path="/mycollectionsindex" 
               render={(props) => {
                 let user_id = current_user.id
-                let collections = this.state.collections.filter(collection => collection.id === user_id)
+                let collections = this.state.collections.filter(collection => collection.user_id === +user_id)
               return < MyCollectionsIndex user_id={user_id} collections={collections}/>
           }}/>}
 
-          <Route path="/mycollectionsshow/:id" component={MyCollectionsShow} />
+          <Route 
+            path="/mycollectionsshow/:id" 
+            render={(props) => {
+              let id = props.match.params.id
+              let collection = this.state.collections.find(collection => collection.id === +id)
+            return < MyCollectionsShow collection={collection}/>
+            }}
+          />
           <Route component={NotFound} />
         </Switch>
         <Footer />
