@@ -1,14 +1,17 @@
 
 class CollectionsController < ApplicationController
   before_action :authenticate_user!
+
   def index 
     collections = current_user.collections
-    render json: collections
+    render json: collections.to_json(include: [:spots])
   end
+
   def show 
     collection = Collection.find(params[:id])
-    render json: collection
+    render json: collection.to_json(include: [:spots])
   end
+
   def create
     user = current_user
     collection = user.collections.create(collection_params)
@@ -18,6 +21,7 @@ class CollectionsController < ApplicationController
       render json: collection.errors.full_messages, status: 422
     end
   end
+
   def update
     collection = Collection.find(params[:id])
     updated_collection = collection.update(collection_params)
@@ -27,12 +31,15 @@ class CollectionsController < ApplicationController
       render json: collection.errors.full_messages, status: 422
     end
   end
+
   def destroy 
     collection = Collection.find(params[:id])
     collection.destroy
   end
+
   private 
   def collection_params
     params.require(:collection).permit(:name, :description, :priority)
   end
+
 end
