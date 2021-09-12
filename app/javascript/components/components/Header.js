@@ -13,9 +13,13 @@ import { NavLink } from 'react-router-dom'
         return (
             
             <header>
+                <br/>
                 <p>This is the header</p>
                 <nav>
                     <ul>
+                        {logged_in && <a href="/surfspotindex">
+                            Surf Breaks
+                        </a>}
                         {logged_in && <a href="/mycollectionsindex">
                             My Collections
                         </a>}

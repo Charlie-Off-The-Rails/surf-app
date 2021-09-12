@@ -29,6 +29,7 @@ class App extends Component {
   // was getting an unexpected token error.
   componentDidMount(){
     this.props.logged_in ? this.readCollections() : console.log(this.state.collections)
+    this.readSpots()
   }
 
   // should we have a catch block for potential errors?
@@ -37,9 +38,17 @@ class App extends Component {
     const result = await response.json()
     this.setState({collections: result})
   }
+
+  // read Spots
+  readSpots = async () => {
+    const response = await fetch("/spots")
+    const result = await response.json()
+    this.setState({surfSpots: result})
+  }
   
   render() {
     console.log(this.state.collections)
+    console.log(this.state.surfSpots)
     const { 
       logged_in, 
       new_user_route, 
@@ -58,7 +67,14 @@ class App extends Component {
         />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/surfspotindex" component={SurfSpotIndex} />
+          
+          {logged_in &&
+          <Route 
+            path="/surfspotindex" 
+            render={() => 
+            < SurfSpotIndex surfSpots={this.state.surfSpots}/>}
+          />}
+
           <Route path="/surfspotshow/:id" component={SurfSpotShow} />
           <Route path="/collectionnew" component={CollectionNew} />
           <Route path="/collectionedit" component={CollectionEdit} />
@@ -67,7 +83,7 @@ class App extends Component {
           {logged_in && 
             <Route 
               path="/mycollectionsindex" 
-              render={(props) => {
+              render={() => {
                 let user_id = current_user.id
                 let collections = this.state.collections.filter(collection => collection.user_id === +user_id)
               return < MyCollectionsIndex user_id={user_id} collections={collections}/>
