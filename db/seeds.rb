@@ -123,9 +123,13 @@ spot_attributes.each do |value|
 end
 
 
-collection_spot_1 = CollectionSpot.create( { collection_id: 1, spot_id: 1} )
+collection_1_spot_1 = CollectionSpot.create({ collection_id: 1, spot_id: 1})
 
+collection_1_spot_2 = CollectionSpot.create( {collection_id: 1, spot_id: 2})
 
+collection_2_spot_1 = CollectionSpot.create({collection_id: 2, spot_id: 3})
+
+collection_2_spot_2 = CollectionSpot.create({collection_id: 2, spot_id: 2})
 
 #  if we want a fresh database
 #   $ rails db:reset 
