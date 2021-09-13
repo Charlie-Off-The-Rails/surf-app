@@ -34,16 +34,16 @@ import { NavLink } from 'react-router-dom'
                             <NavLink to="/collectionnew">
                                 Create a collection
                             </NavLink>
-                            <NavLink to={sign_out_route}>
+                            <a href={sign_out_route}>
                                 Sign Out
-                            </NavLink>
+                            </a>
                         </>
                         }
                         <br/>
                         {!logged_in && 
-                            <NavLink to={sign_in_route}>
+                            <a href={sign_in_route}>
                                  Sign In
-                        </NavLink>}
+                        </a>}
                     </ul>
                 </nav>
             </header>
