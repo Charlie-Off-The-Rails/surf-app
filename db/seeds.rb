@@ -15,7 +15,7 @@ user = User.create(
     })
 
 
-collection = Collection.create(
+collection_1 = Collection.create(
     { 
         name:'Saturday', 
         description: 'My favorite spots for Saturday', 
@@ -24,14 +24,16 @@ collection = Collection.create(
         user_id: user.id
     })
 
-
-# will need another migration to redefine surf_height as minimum_surf_height and add a new column as max_surf_height
-
-# we are comparing the tide type. looking into a good way to compare tide data. think about making it a array. 
+collection_2 = Collection.create(
+    {
+        name:'Summer Breaks', 
+        description: 'My favorite spots for the Summer', 
+        priority: 2 ,
+        # added user_id attribute
+        user_id: user.id
+    })
 
 # looking into a math formulat to figure out azimuth range ex: 350 to 10 (ex: NW to NE)
-
-# treating easy_parking as easy_access (true or false)
 
 spot_attributes = [ 
         { 
@@ -116,14 +118,23 @@ spot_attributes = [
     ]
 
 spot_attributes.each do |value|
-    Spot.create value
+    new_spot = Spot.create value
     puts "creating #{value}"
+    if new_spot.valid?
+        puts "spot created"
+    else 
+        puts new_spot.errors.full_messages
+    end
 end
 
 
-collection_spot_1 = CollectionSpot.create( { collection_id: 1, spot_id: 1} )
+collection_1_spot_1 = CollectionSpot.create({ collection_id: 1, spot_id: 1})
 
+collection_1_spot_2 = CollectionSpot.create( {collection_id: 1, spot_id: 2})
 
+collection_2_spot_1 = CollectionSpot.create({collection_id: 2, spot_id: 3})
+
+collection_2_spot_2 = CollectionSpot.create({collection_id: 2, spot_id: 2})
 
 #  if we want a fresh database
 #   $ rails db:reset 
