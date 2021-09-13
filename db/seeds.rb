@@ -118,8 +118,13 @@ spot_attributes = [
     ]
 
 spot_attributes.each do |value|
-    Spot.create value
+    new_spot = Spot.create value
     puts "creating #{value}"
+    if new_spot.valid?
+        puts "spot created"
+    else 
+        puts new_spot.errors.full_messages
+    end
 end
 
 
