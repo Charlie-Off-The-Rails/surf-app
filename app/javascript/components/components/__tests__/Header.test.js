@@ -11,4 +11,10 @@ describe("When header renders", () => {
         const renderHeaderTag = header.find("header")
         expect(renderHeaderTag.length).toEqual(1)
     })
-})
+}) 
+
+//  Aaron said we can use spec testing here
+// describe("When logged in", () => {
+//     it("displays `my collections` and `create a collection` buttons", () => {
+//     })
+// })

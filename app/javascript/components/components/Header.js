@@ -17,15 +17,25 @@ import { NavLink } from 'react-router-dom'
                 <p>This is the header</p>
                 <nav>
                     <ul>
-                        {logged_in && <a href="/surfspotindex">
-                            Surf Breaks
-                        </a>}
-                        {logged_in && <a href="/mycollectionsindex">
+                        <a href="/">
+                            Home
+                        </a> 
+                        {logged_in &&
+                        <>
+                        <a href="/surfspotindex">
+                            Surf Spots
+                        </a>
+                        <a href="/mycollectionsindex">
                             My Collections
-                        </a>}
-                        {logged_in && <a href={sign_out_route}>
+                        </a>
+                         <a href="/collectionnew">
+                            Create a collection
+                        </a>
+                         <a href={sign_out_route}>
                             Sign Out
-                        </a>}
+                        </a>
+                        </>
+                        }
                         <br/>
                         {!logged_in && <a href={sign_in_route}>
                             Sign In
