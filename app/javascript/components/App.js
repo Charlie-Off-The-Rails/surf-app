@@ -29,7 +29,7 @@ class App extends Component {
 
   // was getting an unexpected token error.
   componentDidMount() {
-    this.props.logged_in ? this.readCollections() : console.log(this.state.collections)
+    if (this.props.logged_in) this.readCollections() 
     this.readSpots()
   }
 

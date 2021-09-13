@@ -27,6 +27,11 @@ class CollectionNew extends Component {
     }
 
     render() {
+        const { 
+            name,
+            description,
+            priority
+        } = this.state.form
         return (
             <>
                 <p>This is the collection new page!</p>
@@ -36,21 +41,21 @@ class CollectionNew extends Component {
                         name="name" 
                         type="text"
                         onChange={this.handleChange}
-                        value={this.state.form.name} 
+                        value={name} 
                     />
                     <label htmlFor="description">Description:</label>
                     <input 
                         name="description" 
                         type="text"
                         onChange={this.handleChange}
-                        value={this.state.form.description}
+                        value={description}
                     />
                     <label htmlFor="priority">Priority:</label>
                     <input 
                         name="priority" 
                         type="number" 
                         onChange={this.handleChange}
-                        value={this.state.form.priority}
+                        value={priority}
                     />
                     <button type="submit">Submit</button>
                     { this.state.submitted && <Redirect to="/surfspotindex" /> }
