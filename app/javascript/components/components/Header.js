@@ -19,26 +19,30 @@ import { NavLink } from 'react-router-dom'
                     <ul>
                         <a href="/">
                             Home
+                        </a>
+                        <a href="/aboutus">
+                            About Us
                         </a> 
                         {logged_in &&
                         <>
-                        <a href="/surfspotindex">
-                            Surf Spots
-                        </a>
-                        <a href="/mycollectionsindex">
-                            My Collections
-                        </a>
-                         <a href="/collectionnew">
-                            Create a collection
-                        </a>
-                         <a href={sign_out_route}>
-                            Sign Out
-                        </a>
+                            <a href="/surfspotindex">
+                                Surf Spots
+                            </a>
+                            <a href="/mycollectionsindex">
+                                My Collections
+                            </a>
+                            <a href="/collectionnew">
+                                Create a collection
+                            </a>
+                            <a href={sign_out_route}>
+                                Sign Out
+                            </a>
                         </>
                         }
                         <br/>
-                        {!logged_in && <a href={sign_in_route}>
-                            Sign In
+                        {!logged_in && 
+                            <a href={sign_in_route}>
+                                 Sign In
                         </a>}
                     </ul>
                 </nav>

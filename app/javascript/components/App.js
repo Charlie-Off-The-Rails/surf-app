@@ -9,6 +9,7 @@ import CollectionEdit from "./pages/CollectionEdit"
 import MyCollectionsIndex from "./pages/MyCollectionsIndex"
 import MyCollectionsShow from "./pages/MyCollectionsShow"
 import NotFound from "./pages/NotFound"
+import AboutUs from "./pages/AboutUs"
 
 import {
   BrowserRouter as Router,
@@ -78,6 +79,7 @@ class App extends Component {
           <Route path="/surfspotshow/:id" component={SurfSpotShow} />
           <Route path="/collectionnew" component={CollectionNew} />
           <Route path="/collectionedit" component={CollectionEdit} />
+          <Route path="/aboutus" component={AboutUs} />
 
           {/* using filter here to get the collections that bellongs to a specific user */}
           {logged_in && 
