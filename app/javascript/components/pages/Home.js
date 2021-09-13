@@ -4,7 +4,7 @@ import React, { Component } from 'react'
     render() {
         return (
             <>
-                <p>This is the home page!</p>
+                <p className="text-red-500 text-center">This is the home page!</p>
             </>
         )
     }
