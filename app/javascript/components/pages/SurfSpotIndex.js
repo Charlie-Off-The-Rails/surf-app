@@ -18,15 +18,6 @@ import React, { Component } from 'react'
                                     <li>
                                          {`Description: ${surfSpot.description} surfSpot.`} 
                                     </li>
-                                    <li>
-                                         {`Bottom: ${surfSpot.bottom}.`} 
-                                    </li>
-                                    <li>
-                                         {`Tide: ${surfSpot.tide}.`} 
-                                    </li>
-                                    <li>
-                                         {`Swell Direction: ${surfSpot.bottom} degrees.`} 
-                                    </li>
                                 </ul>
                             </div>
                          )
