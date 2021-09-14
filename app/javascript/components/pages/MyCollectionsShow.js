@@ -10,11 +10,6 @@ import { Link } from 'react-router-dom';
         };
       }
 
-    handleSubmit = () => {
-        this.props.deleteCollection(this.props.collection.id)
-        this.setState({submitted: true})
-    }
-
     render() {
         const { collection } = this.props
         return (
