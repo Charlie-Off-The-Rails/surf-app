@@ -12,8 +12,8 @@ class SurfSpotIndex extends Component {
           {surfSpots &&
             surfSpots.map((surfSpot) => {
               return (
-                <Link to={`/surfspotshow/${surfSpot.id}`}>
-                  <div key={surfSpot.id} className="border-2 border-red-400">
+                <Link key={surfSpot.id} to={`/surfspotshow/${surfSpot.id}`}>
+                  <div className="border-2 border-red-400">
                     <ul>
                       <li>{`Surf Spot: ${surfSpot.name}.`}</li>
                       <li>{`Description: ${surfSpot.description} surfSpot.`}</li>
