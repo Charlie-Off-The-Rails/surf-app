@@ -31,6 +31,9 @@ import { Link } from 'react-router-dom';
                                             <p key={spot.id}> { `${spot.name}` } </p>
                                         )
                                     })}
+                                    <Link to={`/collectionedit/${collection.id}`}>
+                                        <button>Edit</button>
+                                    </Link>
                                 </ul>
                             </div>
                          )

@@ -61,6 +61,10 @@ class App extends Component {
     this.readCollections()
   }
 
+  updateCollection = async (editCollection) => {
+    console.log("this is the editCollection!")
+  }
+
   render() {
     // console.log(this.state.collections)
     // console.log(this.state.surfSpots)
@@ -109,7 +113,14 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/collectionedit" component={CollectionEdit} />
+          <Route path="/collectionedit/:id" render={(props) => {
+            const user_id = current_user.id
+            const id = props.match.params.id
+            const editCollection = this.updateCollection
+            const collection = this.state.collections.find(collection => collection.id === +id)
+            return <CollectionEdit collection={collection} editCollection={editCollection} user_id={user_id}/>
+          }} />
+          
           <Route path="/aboutus" component={AboutUs} />
 
           {/* using filter here to get the collections that bellongs to a specific user */}
