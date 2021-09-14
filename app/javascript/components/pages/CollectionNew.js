@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import CollectionForm from '../components/CollectionForm'
 
 class CollectionNew extends Component {
     constructor(props) {
@@ -35,31 +35,13 @@ class CollectionNew extends Component {
         return (
             <>
                 <p>This is the collection new page!</p>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="name">Name:</label>
-                    <input 
-                        name="name" 
-                        type="text"
-                        onChange={this.handleChange}
-                        value={name} 
-                    />
-                    <label htmlFor="description">Description:</label>
-                    <input 
-                        name="description" 
-                        type="text"
-                        onChange={this.handleChange}
-                        value={description}
-                    />
-                    <label htmlFor="priority">Priority:</label>
-                    <input 
-                        name="priority" 
-                        type="number" 
-                        onChange={this.handleChange}
-                        value={priority}
-                    />
-                    <button type="submit">Submit</button>
-                    { this.state.submitted && <Redirect to="/surfspotindex" /> }
-                </form>
+                <CollectionForm 
+                    handleChange = { this.handleChange }
+                    handleSubmit = { this.handleSubmit }
+                    collectionInfo = { this.state.form }
+                    submitted = { this.state.submitted }
+                />
+                
             </>
         )
     }
