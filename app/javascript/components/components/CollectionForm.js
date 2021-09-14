@@ -15,7 +15,7 @@ class CollectionForm extends Component {
             description,
             priority
         } = this.props.collectionInfo
-
+        
         return (
             
                 <form onSubmit={handleSubmit}>

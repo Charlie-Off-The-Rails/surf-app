@@ -61,8 +61,17 @@ class App extends Component {
     this.readCollections()
   }
 
-  updateCollection = async (editCollection) => {
+  updateCollection =  async (editCollection, id) => {
     console.log("this is the editCollection!")
+    const response = await fetch(`/collections/${id}`, {
+      body: JSON.stringify(editCollection),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PATCH"
+    })
+    await response.json()
+    this.readCollections()
   }
 
   render() {
@@ -116,9 +125,8 @@ class App extends Component {
           <Route path="/collectionedit/:id" render={(props) => {
             const user_id = current_user.id
             const id = props.match.params.id
-            const editCollection = this.updateCollection
             const collection = this.state.collections.find(collection => collection.id === +id)
-            return <CollectionEdit collection={collection} editCollection={editCollection} user_id={user_id}/>
+            return <CollectionEdit collection={collection} editCollection={this.updateCollection} user_id={user_id}/>
           }} />
           
           <Route path="/aboutus" component={AboutUs} />
