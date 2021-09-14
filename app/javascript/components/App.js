@@ -74,9 +74,17 @@ class App extends Component {
     this.readCollections()
   }
 
+  deleteCollection = async (id) => {
+    const response = await fetch(`/collections/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "DELETE"
+    })
+    this.readCollections()
+  }
+
   render() {
-    // console.log(this.state.collections)
-    // console.log(this.state.surfSpots)
     const {
       logged_in,
       new_user_route,
@@ -157,7 +165,7 @@ class App extends Component {
               let collection = this.state.collections.find(
                 (collection) => collection.id === +id
               )
-              return <MyCollectionsShow collection={collection} />
+              return <MyCollectionsShow collection={collection} deleteCollection={this.deleteCollection}/>
             }}
           />
           <Route component={NotFound} />

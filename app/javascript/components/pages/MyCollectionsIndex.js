@@ -14,10 +14,10 @@ import { Link } from 'react-router-dom';
                             <div key={collection.id}>
                                 <ul>
                                     <li>
-                                         {`This is my ${collection.name} collection.`} 
+                                         {collection.name} 
                                     </li>
                                     <li>
-                                         {`Description: ${collection.name} collection.`} 
+                                         {collection.description} 
                                     </li>
                                     <li>
                                          {`Priority: ${collection.priority}.`} 
@@ -31,9 +31,6 @@ import { Link } from 'react-router-dom';
                                             <p key={spot.id}> { `${spot.name}` } </p>
                                         )
                                     })}
-                                    <Link to={`/collectionedit/${collection.id}`}>
-                                        <button>Edit</button>
-                                    </Link>
                                 </ul>
                             </div>
                          )
