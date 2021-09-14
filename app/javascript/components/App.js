@@ -75,7 +75,6 @@ class App extends Component {
   }
 
   deleteCollection = async (id) => {
-    console.log("this.deleteCollection this is Todds Doing")
     const response = await fetch(`/collections/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -86,8 +85,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.collections)
-    // console.log(this.state.surfSpots)
     const {
       logged_in,
       new_user_route,
