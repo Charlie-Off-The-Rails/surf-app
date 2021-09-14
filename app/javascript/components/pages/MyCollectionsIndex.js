@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
             <>
                 <p>This is the collections index page!</p>
                 <div>
-                    {collections && collections.map(collection => {
+                    {collections?.map(collection => {
                          return (
                             <div key={collection.id}>
                                 <ul>
@@ -26,8 +26,11 @@ import { Link } from 'react-router-dom';
                                         Details 
                                     </a>
                                     <h2>Spots:</h2>
-                                    <p> { `${collection.spots[0].name}` } </p>
-                                    <p> { `${collection.spots[1].name}` } </p>
+                                    { collection?.spots.map(spot => {
+                                        return (
+                                            <p key={spot.id}> { `${spot.name}` } </p>
+                                        )
+                                    })}
                                 </ul>
                             </div>
                          )
