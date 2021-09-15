@@ -22,7 +22,6 @@ class CollectionEdit extends Component {
 }
 
 handleSubmit = () => {
-    console.log('handling submit')
     this.props.editCollection(this.state.form, this.props.collection.id)
     this.setState({submitted: true})
 }

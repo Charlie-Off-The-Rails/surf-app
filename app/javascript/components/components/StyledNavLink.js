@@ -6,7 +6,7 @@ class StyledNavLink extends Component {
     return (
       <NavLink
         to={this.props.to}
-        className="text-yellow-900 hover:text-gray-200 font-semibold transition-colors"
+        className="text-brown hover:text-gray-light text-4x1 font-semibold transition-colors px-8"
       >
         {this.props.children}
       </NavLink>
