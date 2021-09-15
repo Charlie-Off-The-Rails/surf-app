@@ -8,7 +8,7 @@ import StyledCardDetails from "../components/StyledCardDetails";
 
 class SurfSpotIndex extends Component {
   render() {
-    const { surfSpots } = this.props;
+    const { surfSpots, collections } = this.props;
     console.log(surfSpots);
     return (
       <>
@@ -18,16 +18,26 @@ class SurfSpotIndex extends Component {
           {surfSpots &&
             surfSpots.map((surfSpot) => {
               return (
-                <Link key={surfSpot.id} to={`/surfspotshow/${surfSpot.id}`}>
-                  <CardStyle>
-                    <ul>
+                <CardStyle>
+                  <div>
+                    <Link key={surfSpot.id} to={`/surfspotshow/${surfSpot.id}`}>
                       <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
-                      <StyledCardDetails>
-                        {surfSpot.description}
-                      </StyledCardDetails>
-                    </ul>
-                  </CardStyle>
-                </Link>
+                    </Link>
+                    <StyledCardDetails>
+                      {surfSpot.description}
+                    </StyledCardDetails>
+                    <select>
+                      {collections?.map((collection) => {
+                        return (
+                          <option value={collection.id}>
+                            {collection.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <button>+</button>
+                  </div>
+                </CardStyle>
               );
             })}
         </CardFormat>

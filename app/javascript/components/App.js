@@ -107,7 +107,7 @@ class App extends Component {
           {logged_in && (
             <Route
               path="/surfspotindex"
-              render={() => <SurfSpotIndex surfSpots={this.state.surfSpots} />}
+              render={() => <SurfSpotIndex surfSpots={this.state.surfSpots} collections={this.state.collections}/>}
             />
           )}
 
