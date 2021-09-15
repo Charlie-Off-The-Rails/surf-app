@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import { NavLink } from "react-router-dom"
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class StyledNavLink extends Component {
   render() {
@@ -10,8 +10,8 @@ class StyledNavLink extends Component {
       >
         {this.props.children}
       </NavLink>
-    )
+    );
   }
 }
 
-export default StyledNavLink
+export default StyledNavLink;

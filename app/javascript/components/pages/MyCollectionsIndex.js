@@ -1,45 +1,49 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import StyledPageTitle from "../components/StyledPageTitle";
+import CardFormat from "../components/CardFormat";
+import CardStyle from "../components/CardStyle";
+import StyledCardTitle from "../components/StyledCardTitle";
+import StyledCardDetails from "../components/StyledCardDetails";
+import StyledButton from "../components/StyledButton";
 
- class MyCollectionIndex extends Component {
-    render() {
-        const { collections } = this.props
-        console.log(collections)
-        return (
-            <>
-                <p>This is the collections index page!</p>
-                <div>
-                    {collections?.map(collection => {
-                         return (
-                            <div key={collection.id}>
-                                <ul>
-                                    <li>
-                                         {collection.name} 
-                                    </li>
-                                    <li>
-                                         {collection.description} 
-                                    </li>
-                                    <li>
-                                         {`Priority: ${collection.priority}.`} 
-                                    </li>
-                                    <a href={`/mycollectionsshow/${collection.id}`}> 
-                                        Details 
-                                    </a>
-                                    <h2>Spots:</h2>
-                                    { collection?.spots.map(spot => {
-                                        return (
-                                            <p key={spot.id}> { `${spot.name}` } </p>
-                                        )
-                                    })}
-                                </ul>
-                            </div>
-                         )
-                    })}
-                </div>
-                
-            </>
-        )
-    }
+class MyCollectionIndex extends Component {
+  render() {
+    const { collections } = this.props;
+    console.log(collections);
+    return (
+      <>
+        <StyledPageTitle>My collections</StyledPageTitle>
+        <CardFormat>
+          {collections?.map((collection) => {
+            return (
+              <CardStyle key={collection.id}>
+                <ul>
+                  <StyledCardTitle>{collection.name}</StyledCardTitle>
+                  <StyledCardDetails>
+                    {collection.description}
+                  </StyledCardDetails>
+
+                  <StyledCardDetails>
+                    <li>{`Priority: ${collection.priority}`}</li>
+                    <li>
+                      <a href={`/mycollectionsshow/${collection.id}`}>
+                        <StyledButton>Details</StyledButton>
+                      </a>
+                    </li>
+                  </StyledCardDetails>
+                  <br />
+                  <h2>Spots:</h2>
+                  {collection?.spots.map((spot) => {
+                    return <p key={spot.id}> {`${spot.name}`} </p>;
+                  })}
+                </ul>
+              </CardStyle>
+            );
+          })}
+        </CardFormat>
+      </>
+    );
+  }
 }
 
-export default MyCollectionIndex
+export default MyCollectionIndex;

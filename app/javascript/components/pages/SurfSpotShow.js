@@ -1,23 +1,31 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import CardFormat from "../components/CardFormat";
+import CardStyle from "../components/CardStyle";
+import StyledCardTitle from "../components/StyledCardTitle";
+import StyledCardDetails from "../components/StyledCardDetails";
+import StyledButton from "../components/StyledButton";
 
 class SurfSpotShow extends Component {
   render() {
-    const { surfSpot } = this.props
+    const { surfSpot } = this.props;
     return (
       <>
-        <p>This is the surf spot show page!</p>
-        <div>
-          <ul>
-            <li>{`Surf Spot: ${surfSpot.name}.`}</li>
-            <li>{`Description: ${surfSpot.description} surfSpot.`}</li>
-            <li>{`Bottom: ${surfSpot.bottom}.`}</li>
-            <li>{`Tide: ${surfSpot.tide}.`}</li>
-            <li>{`Swell Direction: ${surfSpot.bottom} degrees.`}</li>
-          </ul>
-        </div>
+        <CardFormat>
+          <CardStyle>
+            <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
+            <StyledCardDetails>{surfSpot.description}</StyledCardDetails>
+            <StyledCardDetails>{`Bottom: ${surfSpot.bottom}`}</StyledCardDetails>
+            <StyledCardDetails>{`Tide: ${surfSpot.tide}`}</StyledCardDetails>
+            <StyledCardDetails>{`Swell Direction: ${surfSpot.bottom} degrees`}</StyledCardDetails>
+            <Link to="/surfspotindex">
+              <StyledButton>Back</StyledButton>
+            </Link>
+          </CardStyle>
+        </CardFormat>
       </>
-    )
+    );
   }
 }
 
-export default SurfSpotShow
+export default SurfSpotShow;
