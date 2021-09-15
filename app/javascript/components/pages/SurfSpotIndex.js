@@ -8,7 +8,7 @@ import StyledCardDetails from "../components/StyledCardDetails";
 
 class SurfSpotIndex extends Component {
   render() {
-    const { surfSpots, collections } = this.props;
+    const { surfSpots, collections, createCollectionSpot } = this.props;
     console.log(surfSpots);
     return (
       <>
@@ -29,13 +29,13 @@ class SurfSpotIndex extends Component {
                     <select>
                       {collections?.map((collection) => {
                         return (
-                          <option value={collection.id}>
+                          <option key={collection.id} value={collection.id}>
                             {collection.name}
                           </option>
                         );
                       })}
                     </select>
-                    <button>+</button>
+                    <button onClick={createCollectionSpot}>+</button>
                   </div>
                 </CardStyle>
               );

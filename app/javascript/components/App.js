@@ -61,14 +61,17 @@ class App extends Component {
     this.readCollections()
   }
 
-  createCollectionSpot = async (collectionId, spotId) => {
+  createCollectionSpot = async (collectionId, spotId, collectionSpot) => {
+    console.log("Create collection works! YAY")
     const response = await fetch("/collection_spots", {
-      body: JSON.stringify(collectionId, spotId),
+      body: JSON.stringify(collectionId, spotId, collectionSpot),
       headers: {
         "Content-Type": "application/json",
       },
-      method:
+      method: "POST"
     })
+    await response.json()
+    this.readCollections()
   }
 
   updateCollection =  async (editCollection, id) => {
@@ -119,7 +122,10 @@ class App extends Component {
           {logged_in && (
             <Route
               path="/surfspotindex"
-              render={() => <SurfSpotIndex surfSpots={this.state.surfSpots} collections={this.state.collections}/>}
+              render={() => <SurfSpotIndex 
+                surfSpots={this.state.surfSpots} 
+                collections={this.state.collections} 
+                createCollectionSpot={this.createCollectionSpot}/>}
             />
           )}
 
@@ -146,7 +152,10 @@ class App extends Component {
             const user_id = current_user.id
             const id = props.match.params.id
             const collection = this.state.collections.find(collection => collection.id === +id)
-            return <CollectionEdit collection={collection} editCollection={this.updateCollection} user_id={user_id}/>
+            return <CollectionEdit 
+            collection={collection} 
+            editCollection={this.updateCollection} 
+            user_id={user_id}/>
           }} />
           
           <Route path="/aboutus" component={AboutUs} />
