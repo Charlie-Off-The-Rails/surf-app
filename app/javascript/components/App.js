@@ -61,6 +61,16 @@ class App extends Component {
     this.readCollections()
   }
 
+  createCollectionSpot = async (collectionId, spotId) => {
+    const response = await fetch("/collection_spots", {
+      body: JSON.stringify(collectionId, spotId),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method:
+    })
+  }
+
   updateCollection =  async (editCollection, id) => {
     console.log("this is the editCollection!")
     const response = await fetch(`/collections/${id}`, {
@@ -83,6 +93,8 @@ class App extends Component {
     })
     this.readCollections()
   }
+
+
 
   render() {
     const {
