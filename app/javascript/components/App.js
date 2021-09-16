@@ -50,6 +50,8 @@ class App extends Component {
   // creating a new collection
   createCollection = async (newCollection) => {
     newCollection.user_id = this.props.current_user.id
+    console.log("new collection before:", newCollection)
+    console.log("new colleciton after:", JSON.stringify(newCollection))
     const response = await fetch("/collections", {
       body: JSON.stringify(newCollection),
       headers: {
@@ -61,9 +63,15 @@ class App extends Component {
     this.readCollections()
   }
 
-  createCollectionSpot = async (collectionId, spotId, collectionSpot) => {
+  createCollectionSpot = async (collectionId, spotId) => {
+    console.log("collection id and spot id", collectionId, spotId)
     const response = await fetch("/collection_spots", {
-      body: JSON.stringify(collectionId, spotId, collectionSpot),
+      body: JSON.stringify(
+        {
+        collection_id: collectionId,
+        spot_id: spotId
+      }
+      ),
       headers: {
         "Content-Type": "application/json",
       },
@@ -87,6 +95,7 @@ class App extends Component {
   }
 
   deleteCollection = async (id) => {
+    console.log("delete collection invoke!")
     const response = await fetch(`/collections/${id}`, {
       headers: {
         "Content-Type": "application/json",
