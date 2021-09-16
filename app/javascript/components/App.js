@@ -95,6 +95,7 @@ class App extends Component {
   }
 
   deleteCollection = async (id) => {
+    console.log("delete collection invoke!")
     const response = await fetch(`/collections/${id}`, {
       headers: {
         "Content-Type": "application/json",
