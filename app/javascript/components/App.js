@@ -62,7 +62,6 @@ class App extends Component {
   }
 
   createCollectionSpot = async (collectionId, spotId, collectionSpot) => {
-    console.log("Create collection works! YAY")
     const response = await fetch("/collection_spots", {
       body: JSON.stringify(collectionId, spotId, collectionSpot),
       headers: {
