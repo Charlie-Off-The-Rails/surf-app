@@ -18,24 +18,27 @@ class SurfSpotIndex extends Component {
           {surfSpots &&
             surfSpots.map((surfSpot) => {
               return (
-                <CardStyle>
+                <CardStyle key={surfSpot.id}>
                   <div>
-                    <Link key={surfSpot.id} to={`/surfspotshow/${surfSpot.id}`}>
+                    <Link to={`/surfspotshow/${surfSpot.id}`}>
                       <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
                     </Link>
                     <StyledCardDetails>
                       {surfSpot.description}
                     </StyledCardDetails>
-                    <select>
+                    <select >
                       {collections?.map((collection) => {
                         return (
-                          <option key={collection.id} value={collection.id}>
+                          <option onClick={() => {
+                            console.log("running function")
+                            createCollectionSpot(collection.id, surfSpot.id)}} 
+                            key={collection.id} value={collection.id}>
                             {collection.name}
                           </option>
                         );
                       })}
                     </select>
-                    <button onClick={createCollectionSpot}>+</button>
+                    {/* <button onClick={() => createCollectionSpot(collection.id, surfSpot.id)}>+</button> */}
                   </div>
                 </CardStyle>
               );
