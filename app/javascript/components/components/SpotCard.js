@@ -18,6 +18,17 @@ class SpotCard extends Component {
         this.setState({collectionId: e.target.value})
     }
 
+    getWeatherData = async (latitude, longitude) => {
+      const response = await fetch(`https://api.worldweatheronline.com/premium/v1/marine.ashx?q=${latitude},${longitude}&format=json&tp=24&tide=yes`)
+      const result = await response.json()
+      console.log(result)
+      return result
+    }
+
+    componentDidMount = () => {
+    this.getWeatherData("48.834", "2.394")
+    }
+
     render() {
         const { surfSpot, collections, createCollectionSpot } = this.props;
         return (
