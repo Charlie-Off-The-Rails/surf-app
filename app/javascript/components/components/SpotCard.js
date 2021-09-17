@@ -26,7 +26,7 @@ class SpotCard extends Component {
     }
 
     componentDidMount = () => {
-    this.getWeatherData("48.834", "2.394")
+    this.getWeatherData(this.props.surfSpot.latitude, this.props.surfSpot.longitude)
     }
 
     render() {
