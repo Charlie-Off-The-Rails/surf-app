@@ -6,7 +6,7 @@ import SpotCard from "../components/SpotCard";
 
 class SurfSpotIndex extends Component {
   render() {
-    const { surfSpots, collections, createCollectionSpot } = this.props;
+    const { surfSpots, collections, createCollectionSpot, super_secret_api_key } = this.props;
     return (
       <>
         <StyledPageTitle>Surf Spots</StyledPageTitle>
@@ -20,6 +20,7 @@ class SurfSpotIndex extends Component {
                   collections={collections}
                   createCollectionSpot={createCollectionSpot}
                   key={surfSpot.id}
+                  super_secret_api_key={super_secret_api_key}
                 />
               );
             })}
