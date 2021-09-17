@@ -19,7 +19,8 @@ class SpotCard extends Component {
     }
 
     getWeatherData = async (latitude, longitude) => {
-      const api_key = process.env.REACT_APP_API_KEY
+      // const api_key = process.env.REACT_APP_API_KEY
+      const api_key = this.props.super_secret_api_key
       console.log(api_key)
       const response = await fetch(`https://api.worldweatheronline.com/premium/v1/marine.ashx?key=${api_key}&q=${latitude},${longitude}&format=json&tp=24&tide=yes`)
 

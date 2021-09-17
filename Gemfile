@@ -1,3 +1,4 @@
+gem 'dotenv-rails'
 
 
 source 'https://rubygems.org'

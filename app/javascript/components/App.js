@@ -17,6 +17,8 @@ import {
   Switch
 } from "react-router-dom"
 
+// console.log(process.env.REACT_APP_API_KEY)
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -113,7 +115,8 @@ class App extends Component {
       new_user_route,
       sign_in_route,
       sign_out_route,
-      current_user
+      current_user,
+      super_secret_api_key
     } = this.props
     return (
       <Router>
@@ -133,7 +136,8 @@ class App extends Component {
               render={() => <SurfSpotIndex 
                 surfSpots={this.state.surfSpots} 
                 collections={this.state.collections} 
-                createCollectionSpot={this.createCollectionSpot}/>}
+                createCollectionSpot={this.createCollectionSpot}
+                super_secret_api_key={super_secret_api_key}/>}
             />
           )}
 
