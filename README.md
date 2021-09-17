@@ -40,7 +40,7 @@ http://www.example.com
 - [enzyme](https://enzymejs.github.io/enzyme/)
 - [rspec](http://rspec.info/)
 - [pry](https://github.com/rweng/pry-rails)
-- [figaro](https://github.com/laserlemon/figaro)
+- [dotenv](https://github.com/bkeepers/dotenv)
 
 
 ## Contributors
