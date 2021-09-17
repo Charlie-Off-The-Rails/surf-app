@@ -17,7 +17,6 @@ import {
   Switch
 } from "react-router-dom"
 
-// console.log(process.env.REACT_APP_API_KEY)
 
 class App extends Component {
   constructor(props) {
