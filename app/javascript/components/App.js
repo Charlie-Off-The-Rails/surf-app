@@ -1,112 +1,124 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import Footer from "./components/Footer";
-import Header from "./components/Header"
-import Home from "./pages/Home"
-import SurfSpotIndex from "./pages/SurfSpotIndex"
-import SurfSpotShow from "./pages/SurfSpotShow"
-import CollectionNew from "./pages/CollectionNew"
-import CollectionEdit from "./pages/CollectionEdit"
-import MyCollectionsIndex from "./pages/MyCollectionsIndex"
-import MyCollectionsShow from "./pages/MyCollectionsShow"
-import NotFound from "./pages/NotFound"
-import AboutUs from "./pages/AboutUs"
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import SurfSpotIndex from "./pages/SurfSpotIndex";
+import SurfSpotShow from "./pages/SurfSpotShow";
+import CollectionNew from "./pages/CollectionNew";
+import CollectionEdit from "./pages/CollectionEdit";
+import MyCollectionsIndex from "./pages/MyCollectionsIndex";
+import MyCollectionsShow from "./pages/MyCollectionsShow";
+import NotFound from "./pages/NotFound";
+import AboutUs from "./pages/AboutUs";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from "react-router-dom"
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       collections: [],
-      surfSpots: []
-    }
-
+      surfSpots: [],
+      weatherData: {},
+    };
   }
 
   // was getting an unexpected token error.
   componentDidMount() {
-    if (this.props.logged_in) this.readCollections() 
-    this.readSpots()
+    if (this.props.logged_in) this.readCollections();
+    this.readSpots();
   }
 
   // should we have a catch block for potential errors?
   readCollections = async () => {
-    const response = await fetch("/collections")
-    const result = await response.json()
-    this.setState({ collections: result })
-  }
+    const response = await fetch("/collections");
+    const result = await response.json();
+    this.setState({ collections: result });
+  };
 
   // read Spots
   readSpots = async () => {
-    const response = await fetch("/spots")
-    const result = await response.json()
-    this.setState({ surfSpots: result })
-  }
+    const response = await fetch("/spots");
+    const result = await response.json();
+    this.setState({ surfSpots: result });
+    var surfData = {};
+    for (let i = 0; i < result.length; i++) {
+      //loop through each surfSpot to get ID, lat, and long
+      var surfId = result[i].id
+      var latitude = result[i].latitude
+      var longitude = result[i].longitude
+      
+      //make fetch request
+      const api_key = this.props.super_secret_api_key;
+      const response = await fetch(
+        `https://api.worldweatheronline.com/premium/v1/marine.ashx?key=${api_key}&q=${latitude},${longitude}&format=json&tp=24&tide=yes`
+      );
+
+      const fetchResult = await response.json();
+      const weatherData = fetchResult.data.weather[0].hourly[0];
+      var swellDir = weatherData.swellDir16Point
+      var windDir = weatherData.winddir16Point
+      //store variables in an object
+      //add a key on surfData with the ID of our spot and give it the value of the variables that we stored in the object
+      //surfData[exampleSpotId] = {swellDir: blah, windDir: bleh}
+    }
+  };
 
   // creating a new collection
   createCollection = async (newCollection) => {
-    newCollection.user_id = this.props.current_user.id
-    console.log("new collection before:", newCollection)
-    console.log("new colleciton after:", JSON.stringify(newCollection))
+    newCollection.user_id = this.props.current_user.id;
+    console.log("new collection before:", newCollection);
+    console.log("new colleciton after:", JSON.stringify(newCollection));
     const response = await fetch("/collections", {
       body: JSON.stringify(newCollection),
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST"
-    })
-    await response.json()
-    this.readCollections()
-  }
+      method: "POST",
+    });
+    await response.json();
+    this.readCollections();
+  };
 
   createCollectionSpot = async (collectionId, spotId) => {
-    console.log("collection id and spot id", collectionId, spotId)
+    console.log("collection id and spot id", collectionId, spotId);
     const response = await fetch("/collection_spots", {
-      body: JSON.stringify(
-        {
+      body: JSON.stringify({
         collection_id: collectionId,
-        spot_id: spotId
-      }
-      ),
+        spot_id: spotId,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST"
-    })
-    await response.json()
-    this.readCollections()
-  }
+      method: "POST",
+    });
+    await response.json();
+    this.readCollections();
+  };
 
-  updateCollection =  async (editCollection, id) => {
-    console.log("this is the editCollection!")
+  updateCollection = async (editCollection, id) => {
+    console.log("this is the editCollection!");
     const response = await fetch(`/collections/${id}`, {
       body: JSON.stringify(editCollection),
       headers: {
         "Content-Type": "application/json",
       },
-      method: "PATCH"
-    })
-    await response.json()
-    this.readCollections()
-  }
+      method: "PATCH",
+    });
+    await response.json();
+    this.readCollections();
+  };
 
   deleteCollection = async (id) => {
-    console.log("delete collection invoke!")
+    console.log("delete collection invoke!");
     const response = await fetch(`/collections/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
-      method: "DELETE"
-    })
-    this.readCollections()
-  }
-
-
+      method: "DELETE",
+    });
+    this.readCollections();
+  };
 
   render() {
     const {
@@ -115,8 +127,8 @@ class App extends Component {
       sign_in_route,
       sign_out_route,
       current_user,
-      super_secret_api_key
-    } = this.props
+      super_secret_api_key,
+    } = this.props;
     return (
       <Router>
         <Header
@@ -132,22 +144,25 @@ class App extends Component {
           {logged_in && (
             <Route
               path="/surfspotindex"
-              render={() => <SurfSpotIndex 
-                surfSpots={this.state.surfSpots} 
-                collections={this.state.collections} 
-                createCollectionSpot={this.createCollectionSpot}
-                super_secret_api_key={super_secret_api_key}/>}
+              render={() => (
+                <SurfSpotIndex
+                  surfSpots={this.state.surfSpots}
+                  collections={this.state.collections}
+                  createCollectionSpot={this.createCollectionSpot}
+                  super_secret_api_key={super_secret_api_key}
+                />
+              )}
             />
           )}
 
           <Route
             path="/surfspotshow/:id"
             render={(props) => {
-              const id = props.match.params.id
+              const id = props.match.params.id;
               const surfSpot = this.state.surfSpots.find(
                 (spot) => spot.id === +id
-              )
-              return <SurfSpotShow surfSpot={surfSpot} />
+              );
+              return <SurfSpotShow surfSpot={surfSpot} />;
             }}
           />
           <Route
@@ -159,16 +174,24 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/collectionedit/:id" render={(props) => {
-            const user_id = current_user.id
-            const id = props.match.params.id
-            const collection = this.state.collections.find(collection => collection.id === +id)
-            return <CollectionEdit 
-            collection={collection} 
-            editCollection={this.updateCollection} 
-            user_id={user_id}/>
-          }} />
-          
+          <Route
+            path="/collectionedit/:id"
+            render={(props) => {
+              const user_id = current_user.id;
+              const id = props.match.params.id;
+              const collection = this.state.collections.find(
+                (collection) => collection.id === +id
+              );
+              return (
+                <CollectionEdit
+                  collection={collection}
+                  editCollection={this.updateCollection}
+                  user_id={user_id}
+                />
+              );
+            }}
+          />
+
           <Route path="/aboutus" component={AboutUs} />
 
           {/* using filter here to get the collections that bellongs to a specific user */}
@@ -176,16 +199,16 @@ class App extends Component {
             <Route
               path="/mycollectionsindex"
               render={() => {
-                let user_id = current_user.id
+                let user_id = current_user.id;
                 let collections = this.state.collections.filter(
                   (collection) => collection.user_id === +user_id
-                )
+                );
                 return (
                   <MyCollectionsIndex
                     user_id={user_id}
                     collections={collections}
                   />
-                )
+                );
               }}
             />
           )}
@@ -193,19 +216,24 @@ class App extends Component {
           <Route
             path="/mycollectionsshow/:id"
             render={(props) => {
-              let id = props.match.params.id
+              let id = props.match.params.id;
               let collection = this.state.collections.find(
                 (collection) => collection.id === +id
-              )
-              return <MyCollectionsShow collection={collection} deleteCollection={this.deleteCollection}/>
+              );
+              return (
+                <MyCollectionsShow
+                  collection={collection}
+                  deleteCollection={this.deleteCollection}
+                />
+              );
             }}
           />
           <Route component={NotFound} />
         </Switch>
         <Footer />
       </Router>
-    )
+    );
   }
 }
 
-export default App
+export default App;
