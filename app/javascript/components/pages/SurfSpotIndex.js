@@ -3,6 +3,7 @@ import StyledPageTitle from "../components/StyledPageTitle";
 import CardFormat from "../components/CardFormat";
 import SpotCard from "../components/SpotCard";
 
+
 class SurfSpotIndex extends Component {
   render() {
     const { surfSpots, collections, createCollectionSpot } = this.props;
@@ -23,6 +24,7 @@ class SurfSpotIndex extends Component {
               );
             })}
         </CardFormat>
+        
       </>
     );
   }

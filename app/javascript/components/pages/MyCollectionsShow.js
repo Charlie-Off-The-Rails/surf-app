@@ -18,11 +18,15 @@ class MyCollectionsShow extends Component {
     const { collection } = this.props;
     return (
       <>
+        <br />
         <CardFormat>
           {collection && (
             <CardStyle>
               <StyledCardTitle>{collection.name}</StyledCardTitle>
               <StyledCardDetails>{collection.description}</StyledCardDetails>
+              <Link to="/mycollectionsindex">
+                <StyledButton>Back</StyledButton>
+              </Link>
               <Link to={`/collectionedit/${collection.id}`}>
                 <StyledButton>Edit</StyledButton>
               </Link>

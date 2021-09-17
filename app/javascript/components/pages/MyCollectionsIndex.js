@@ -13,6 +13,7 @@ class MyCollectionIndex extends Component {
     return (
       <>
         <StyledPageTitle>My collections</StyledPageTitle>
+        <br />
         <CardFormat>
           {collections?.map((collection) => {
             return (

@@ -11,18 +11,20 @@ class SurfSpotShow extends Component {
     const { surfSpot } = this.props;
     return (
       <>
-        <CardFormat>
-          <CardStyle>
-            <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
-            <StyledCardDetails>{surfSpot.description}</StyledCardDetails>
-            <StyledCardDetails>{`Bottom: ${surfSpot.bottom}`}</StyledCardDetails>
-            <StyledCardDetails>{`Tide: ${surfSpot.tide}`}</StyledCardDetails>
-            <StyledCardDetails>{`Swell Direction: ${surfSpot.bottom} degrees`}</StyledCardDetails>
-            <Link to="/surfspotindex">
-              <StyledButton>Back</StyledButton>
-            </Link>
-          </CardStyle>
-        </CardFormat>
+        <div className="pt-10">
+          <CardFormat>
+            <CardStyle>
+              <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
+              <StyledCardDetails>{surfSpot.description}</StyledCardDetails>
+              <StyledCardDetails>{`Bottom: ${surfSpot.bottom}`}</StyledCardDetails>
+              <StyledCardDetails>{`Tide: ${surfSpot.tide}`}</StyledCardDetails>
+              <StyledCardDetails>{`Swell Direction: ${surfSpot.bottom} degrees`}</StyledCardDetails>
+              <Link to="/surfspotindex">
+                <StyledButton>Back</StyledButton>
+              </Link>
+            </CardStyle>
+          </CardFormat>
+        </div>
       </>
     );
   }
