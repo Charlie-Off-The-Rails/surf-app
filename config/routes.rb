@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :snapshots
   resources :collection_spots
   resources :collections
   resources :spots

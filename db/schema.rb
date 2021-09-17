@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_045443) do
+ActiveRecord::Schema.define(version: 2021_09_17_002206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 2021_09_10_045443) do
     t.text "description"
     t.integer "priority"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "snapshots", force: :cascade do |t|
+    t.integer "spot_id"
+    t.integer "wind_direction"
+    t.integer "swell_direction"
+    t.decimal "surf_height"
+    t.string "tide"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
