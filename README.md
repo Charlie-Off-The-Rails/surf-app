@@ -25,6 +25,8 @@ http://www.example.com
 
 ## Dependencies
 
+
+
 ## Contributors
 Alfonso Martinez
 
@@ -33,15 +35,15 @@ Alfonso Martinez
 
 Marcelo Azevedo
 
-[[Github](https://github.com/shrikefound)]
-[[LinkedIn](https://www.linkedin.com/in/alfonso-martinez-dev)]
+[[Github](https://github.com/celoazevedo)]
+[[LinkedIn](https://www.linkedin.com/in/marceloazevedo1/)]
 
 Yarenny Baez
 
-[[Github](https://github.com/shrikefound)]
-[[LinkedIn](https://www.linkedin.com/in/alfonso-martinez-dev)]
+[[Github](https://github.com/Byarenny)]
+[[LinkedIn](https://www.linkedin.com/in/yarennyb/)]
 
 Todd Comte
 
-[[Github](https://github.com/shrikefound)]
-[[LinkedIn](https://www.linkedin.com/in/alfonso-martinez-dev)]
+[[Github](https://github.com/ToddComte)]
+[[LinkedIn](https://www.linkedin.com/in/todd-comte-92b06769/)]
