@@ -21,10 +21,26 @@ http://www.example.com
 - Clone this project locally
 - Run `yarn`
 - Run `Bundle`
+- Initialize your database with:
+  ```ruby
+  rails db:create
+  rails db:migrate
+  rails db:seed
+  ```
+- Start your application with `rails s`
 
 
 ## Dependencies
 
+- [devise](https://github.com/heartcombo/devise)
+- [tailwind](https://tailwindcss.com/docs/guides/create-react-app)
+- [react-rails](https://github.com/reactjs/react-rails)
+- [jest](https://jestjs.io/docs/tutorial-react)
+- [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/)
+- [enzyme](https://enzymejs.github.io/enzyme/)
+- [rspec](http://rspec.info/)
+- [pry](https://github.com/rweng/pry-rails)
+- [figaro](https://github.com/laserlemon/figaro)
 
 
 ## Contributors
@@ -38,12 +54,12 @@ Marcelo Azevedo
 [[Github](https://github.com/celoazevedo)]
 [[LinkedIn](https://www.linkedin.com/in/marceloazevedo1/)]
 
-Yarenny Baez
-
-[[Github](https://github.com/Byarenny)]
-[[LinkedIn](https://www.linkedin.com/in/yarennyb/)]
-
 Todd Comte
 
 [[Github](https://github.com/ToddComte)]
 [[LinkedIn](https://www.linkedin.com/in/todd-comte-92b06769/)]
+
+Yarenny Baez
+
+[[Github](https://github.com/Byarenny)]
+[[LinkedIn](https://www.linkedin.com/in/yarennyb/)]
