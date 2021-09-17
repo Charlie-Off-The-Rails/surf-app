@@ -50,8 +50,28 @@ class App extends Component {
   // creating a new collection
   createCollection = async (newCollection) => {
     newCollection.user_id = this.props.current_user.id
+    console.log("new collection before:", newCollection)
+    console.log("new colleciton after:", JSON.stringify(newCollection))
     const response = await fetch("/collections", {
       body: JSON.stringify(newCollection),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST"
+    })
+    await response.json()
+    this.readCollections()
+  }
+
+  createCollectionSpot = async (collectionId, spotId) => {
+    console.log("collection id and spot id", collectionId, spotId)
+    const response = await fetch("/collection_spots", {
+      body: JSON.stringify(
+        {
+        collection_id: collectionId,
+        spot_id: spotId
+      }
+      ),
       headers: {
         "Content-Type": "application/json",
       },
@@ -75,6 +95,7 @@ class App extends Component {
   }
 
   deleteCollection = async (id) => {
+    console.log("delete collection invoke!")
     const response = await fetch(`/collections/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -83,6 +104,8 @@ class App extends Component {
     })
     this.readCollections()
   }
+
+
 
   render() {
     const {
@@ -107,7 +130,10 @@ class App extends Component {
           {logged_in && (
             <Route
               path="/surfspotindex"
-              render={() => <SurfSpotIndex surfSpots={this.state.surfSpots} />}
+              render={() => <SurfSpotIndex 
+                surfSpots={this.state.surfSpots} 
+                collections={this.state.collections} 
+                createCollectionSpot={this.createCollectionSpot}/>}
             />
           )}
 
@@ -134,7 +160,10 @@ class App extends Component {
             const user_id = current_user.id
             const id = props.match.params.id
             const collection = this.state.collections.find(collection => collection.id === +id)
-            return <CollectionEdit collection={collection} editCollection={this.updateCollection} user_id={user_id}/>
+            return <CollectionEdit 
+            collection={collection} 
+            editCollection={this.updateCollection} 
+            user_id={user_id}/>
           }} />
           
           <Route path="/aboutus" component={AboutUs} />
