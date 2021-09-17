@@ -7,7 +7,9 @@ class CollectionEdit extends Component {
     this.state = {
       form: {
         name: this.props.collection ? this.props.collection.name : "",
-        description: this.props.collection ? this.props.collection.description : "",
+        description: this.props.collection
+          ? this.props.collection.description
+          : "",
         priority: this.props.collection ? this.props.collection.priority : "",
         user_id: this.props.user_id,
       },
@@ -16,26 +18,28 @@ class CollectionEdit extends Component {
   }
 
   handleChange = (e) => {
-    let { form } = this.state
-    form[e.target.name] = e.target.value
-    this.setState({form: form})
-}
+    let { form } = this.state;
+    form[e.target.name] = e.target.value;
+    this.setState({ form: form });
+  };
 
-handleSubmit = () => {
-    this.props.editCollection(this.state.form, this.props.collection.id)
-    this.setState({submitted: true})
-}
-
+  handleSubmit = () => {
+    this.props.editCollection(this.state.form, this.props.collection.id);
+    this.setState({ submitted: true });
+  };
 
   render() {
-    return <>
-            <CollectionForm 
-              handleChange = { this.handleChange }
-              handleSubmit = { this.handleSubmit }
-              collectionInfo = { this.state.form }
-              submitted = { this.state.submitted }
-            />
-     </>;
+    return (
+      <>
+        <br />
+        <CollectionForm
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          collectionInfo={this.state.form}
+          submitted={this.state.submitted}
+        />
+      </>
+    );
   }
 }
 

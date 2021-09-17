@@ -5,6 +5,7 @@ import CardFormat from "../components/CardFormat";
 import CardStyle from "../components/CardStyle";
 import StyledCardTitle from "../components/StyledCardTitle";
 import StyledCardDetails from "../components/StyledCardDetails";
+import ocean from "../assets/ocean.jpeg";
 
 class SurfSpotIndex extends Component {
   render() {
@@ -21,6 +22,13 @@ class SurfSpotIndex extends Component {
                 <Link key={surfSpot.id} to={`/surfspotshow/${surfSpot.id}`}>
                   <CardStyle>
                     <ul>
+                      <img
+                        className="pt-2 w-32 h-32 md:w-48 md:h-auto mx-auto"
+                        src={ocean}
+                        alt=""
+                        width="384"
+                        height="512"
+                      />
                       <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
                       <StyledCardDetails>
                         {surfSpot.description}
@@ -31,6 +39,7 @@ class SurfSpotIndex extends Component {
               );
             })}
         </CardFormat>
+        
       </>
     );
   }
