@@ -126,82 +126,100 @@ class App extends Component {
           sign_out_route={sign_out_route}
           current_user={current_user}
         />
-        <Switch>
-          <Route exact path="/" component={Home} />
+        <main className="pt-24 min-h-screen">
+          <Switch>
+            <Route exact path="/" component={Home} />
 
-          {logged_in && (
-            <Route
-              path="/surfspotindex"
-              render={() => <SurfSpotIndex 
-                surfSpots={this.state.surfSpots} 
-                collections={this.state.collections} 
-                createCollectionSpot={this.createCollectionSpot}
-                super_secret_api_key={super_secret_api_key}/>}
-            />
-          )}
-
-          <Route
-            path="/surfspotshow/:id"
-            render={(props) => {
-              const id = props.match.params.id
-              const surfSpot = this.state.surfSpots.find(
-                (spot) => spot.id === +id
-              )
-              return <SurfSpotShow surfSpot={surfSpot} />
-            }}
-          />
-          <Route
-            path="/collectionnew"
-            render={() => (
-              <CollectionNew
-                user_id={current_user.id}
-                createCollection={this.createCollection}
+            {logged_in && (
+              <Route
+                path="/surfspotindex"
+                render={() => (
+                  <SurfSpotIndex
+                    surfSpots={this.state.surfSpots}
+                    collections={this.state.collections}
+                    createCollectionSpot={this.createCollectionSpot}
+                    super_secret_api_key={super_secret_api_key}
+                  />
+                )}
               />
             )}
-          />
-          <Route path="/collectionedit/:id" render={(props) => {
-            const user_id = current_user.id
-            const id = props.match.params.id
-            const collection = this.state.collections.find(collection => collection.id === +id)
-            return <CollectionEdit 
-            collection={collection} 
-            editCollection={this.updateCollection} 
-            user_id={user_id}/>
-          }} />
-          
-          <Route path="/aboutus" component={AboutUs} />
 
-          {/* using filter here to get the collections that bellongs to a specific user */}
-          {logged_in && (
             <Route
-              path="/mycollectionsindex"
-              render={() => {
-                let user_id = current_user.id
-                let collections = this.state.collections.filter(
-                  (collection) => collection.user_id === +user_id
+              path="/surfspotshow/:id"
+              render={(props) => {
+                const id = props.match.params.id
+                const surfSpot = this.state.surfSpots.find(
+                  (spot) => spot.id === +id
+                )
+                return <SurfSpotShow surfSpot={surfSpot} />
+              }}
+            />
+            <Route
+              path="/collectionnew"
+              render={() => (
+                <CollectionNew
+                  user_id={current_user.id}
+                  createCollection={this.createCollection}
+                />
+              )}
+            />
+            <Route
+              path="/collectionedit/:id"
+              render={(props) => {
+                const user_id = current_user.id
+                const id = props.match.params.id
+                const collection = this.state.collections.find(
+                  (collection) => collection.id === +id
                 )
                 return (
-                  <MyCollectionsIndex
+                  <CollectionEdit
+                    collection={collection}
+                    editCollection={this.updateCollection}
                     user_id={user_id}
-                    collections={collections}
                   />
                 )
               }}
             />
-          )}
 
-          <Route
-            path="/mycollectionsshow/:id"
-            render={(props) => {
-              let id = props.match.params.id
-              let collection = this.state.collections.find(
-                (collection) => collection.id === +id
-              )
-              return <MyCollectionsShow collection={collection} deleteCollection={this.deleteCollection}/>
-            }}
-          />
-          <Route component={NotFound} />
-        </Switch>
+            <Route path="/aboutus" component={AboutUs} />
+
+            {/* using filter here to get the collections that bellongs to a specific user */}
+            {logged_in && (
+              <Route
+                path="/mycollectionsindex"
+                render={() => {
+                  let user_id = current_user.id
+                  let collections = this.state.collections.filter(
+                    (collection) => collection.user_id === +user_id
+                  )
+                  return (
+                    <MyCollectionsIndex
+                      user_id={user_id}
+                      collections={collections}
+                    />
+                  )
+                }}
+              />
+            )}
+
+            <Route
+              path="/mycollectionsshow/:id"
+              render={(props) => {
+                let id = props.match.params.id
+                let collection = this.state.collections.find(
+                  (collection) => collection.id === +id
+                )
+                return (
+                  <MyCollectionsShow
+                    collection={collection}
+                    deleteCollection={this.deleteCollection}
+                  />
+                )
+              }}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </main>
         <Footer />
       </Router>
     )

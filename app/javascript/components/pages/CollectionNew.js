@@ -31,16 +31,16 @@ class CollectionNew extends Component {
     const { name, description, priority } = this.state.form;
     return (
       <>
-        <StyledPageTitle>Create your collection</StyledPageTitle>
-        <br />
+        <StyledPageTitle>Create a Collection</StyledPageTitle>
         <CollectionForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           collectionInfo={this.state.form}
           submitted={this.state.submitted}
+          title="New Collection"
         />
       </>
-    );
+    )
   }
 }
 
