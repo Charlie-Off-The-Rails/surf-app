@@ -10,18 +10,18 @@ class AboutUs extends Component {
     return (
       <>
         <StyledPageTitle>About Us</StyledPageTitle>
-        <div className="pb-10 grid gap-6 w-11/12 max-w-screen-xl mx-auto">
-          <figure className="md:flex bg-white rounded-sm p-8 items-center">
-            <img
-              className="object-cover w-32 h-32 md:h-48 md:w-48 md:rounded-none rounded-full mx-auto"
-              src={alfonso}
-              alt=""
-              width="384"
-              height="512"
-            />
+        <div className="pb-10 grid gap-6 w-11/12 max-w-max mx-auto">
+          <figure className="md:flex bg-white p-8 items-center rounded-md">
+            <div className="w-32 h-32 md:w-48 md:h-48 mx-auto flex-none">
+              <img
+                className="object-cover w-full max-w-full h-full max-h-full rounded-full"
+                src={alfonso}
+                alt="Alfonso Martinez"
+              />
+            </div>
             <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
               <blockquote>
-                <p className="md:text-lg font-semibold">
+                <p className="font-semibold">
                   Alfonso is a web developer based in Southern California. He's
                   a passionate and people-oriented developer -- he enjoys
                   learning novel techniques and technologies, and using them to
@@ -38,17 +38,17 @@ class AboutUs extends Component {
               </figcaption>
             </div>
           </figure>
-          <figure className="md:flex bg-white rounded-sm items-center p-8">
-            <img
-              className=" object-cover w-32 h-32 md:h-48 md:w-48 md:rounded-none rounded-full mx-auto"
-              src={marcelo}
-              alt=""
-              width="384"
-              height="512"
-            />
-            <div class="pt-6 md:p-8 text-center md:text-right space-y-4">
+          <figure className="md:flex bg-white rounded-md items-center p-8">
+            <div className="w-32 h-32 md:w-48 md:h-48 mx-auto flex-none">
+              <img
+                className="object-cover w-full h-full max-w-full max-h-full rounded-full"
+                src={marcelo}
+                alt="Marcelo Azevedo"
+              />
+            </div>
+            <div className="pt-6 md:p-8 text-center md:text-right space-y-4">
               <blockquote>
-                <p className="md:text-lg font-semibold">
+                <p className="font-semibold">
                   I am a software developer based in San Diego, CA. I am
                   currently attending the LEARN Academy full-stack software
                   development boot camp where we are working on multiple
@@ -67,17 +67,17 @@ class AboutUs extends Component {
               </figcaption>
             </div>
           </figure>
-          <figure className="md:flex bg-white rounded-sm p-8 items-center">
-            <img
-              className=" object-cover w-32 h-32 md:h-48 md:w-48 md:rounded-none rounded-full mx-auto"
-              src={todd}
-              alt=""
-              width="384"
-              height="512"
-            />
+          <figure className="md:flex bg-white rounded-md p-8 items-center">
+            <div className="w-32 h-32 md:w-48 md:h-48 mx-auto flex-none">
+              <img
+                className="h-full w-full object-cover max-w-full max-h-full rounded-full"
+                src={todd}
+                alt="Todd Comte"
+              />
+            </div>
             <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
               <blockquote>
-                <p className="md:text-lg font-semibold">
+                <p className="font-semibold">
                   Hard-working, self driven, Junior web developer looking to
                   improve any team or company. Lorem ipsum dolor sit amet,
                   consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -90,17 +90,17 @@ class AboutUs extends Component {
               </figcaption>
             </div>
           </figure>
-          <figure className="md:flex bg-white rounded-sm p-8 items-center">
-            <img
-              className=" object-cover w-32 h-32 md:w-48 md:h-48 md:rounded-none rounded-full mx-auto"
-              src={yarenny}
-              alt=""
-              width="384"
-              height="512"
-            />
-            <div class="pt-6 md:p-8 text-center md:text-right space-y-4">
+          <figure className="md:flex bg-white rounded-md p-8 items-center">
+            <div className="w-32 h-32 md:w-48 md:h-48 mx-auto flex-none">
+              <img
+                className="object-cover w-full h-full max-w-full max-h-full rounded-full"
+                src={yarenny}
+                alt=""
+              />
+            </div>
+            <div className="pt-6 md:p-8 text-center md:text-right space-y-4 flex-1">
               <blockquote>
-                <p className="md:text-lg font-semibold">
+                <p className="font-semibold">
                   Analytical full-stack web developer with a passion for
                   building creative and functional web applications for those to
                   enjoy. Lorem ipsum dolor sit amet, consectetur adipiscing

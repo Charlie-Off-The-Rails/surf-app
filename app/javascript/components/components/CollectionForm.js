@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import StyledCardTitle from "./StyledCardTitle"
 
 class CollectionForm extends Component {
   render() {
@@ -14,7 +15,7 @@ class CollectionForm extends Component {
           onSubmit={handleSubmit}
         >
           <div className=" w-11/12 max-w-prose mx-auto">
-            <h3>{title}</h3>
+            <StyledCardTitle>{title}</StyledCardTitle>
             <label htmlFor="name">Name:</label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-dark leading-tight focus:outline-none focus:shadow-outline"

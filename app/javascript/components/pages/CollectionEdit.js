@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CollectionForm from "../components/CollectionForm";
+import StyledPageTitle from "../components/StyledPageTitle"
 
 class CollectionEdit extends Component {
   constructor(props) {

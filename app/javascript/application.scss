@@ -29,3 +29,7 @@ h3{
 figure:nth-of-type(2n){
   flex-direction: row-reverse;
 }
+
+p{
+  max-width: 60ch;
+}

@@ -12,16 +12,16 @@ class Header extends Component {
       current_user,
     } = this.props
     return (
-      <header className="fixed h-24 bg-white top-0 w-screen">
-        <div className="flex max-h-full justify-items-center w-11/12 max-w-screen-xl mx-auto">
+      <header className="fixed h-24 bg-white top-0 w-screen flex items-center">
+        <div className="flex max-h-full justify-between w-11/12 max-w-screen-xl mx-auto relative">
           <div className="logo max-h-full">
             <img
-              className="logo max-h-full"
+              className="logo max-h-full h-20 w-20"
               src={logo}
               alt="Cowabunga 411 logo with ocean waves"
             />
           </div>
-          <nav className="flex items-center">
+          <nav className=" items-center absolute top-full right-0 bg-red-300">
             <StyledNavLink to="/">Home</StyledNavLink>
             <StyledNavLink to="/aboutus">About Us</StyledNavLink>
             {logged_in && (
