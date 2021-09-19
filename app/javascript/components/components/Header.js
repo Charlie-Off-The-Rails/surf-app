@@ -10,10 +10,12 @@ class Header extends Component {
       sign_in_route,
       sign_out_route,
       current_user,
+      toggleNavBar,
+      menuVisible,
     } = this.props
     return (
       <header className="fixed h-24 bg-white top-0 w-screen flex items-center">
-        <div className="flex max-h-full justify-between w-11/12 max-w-screen-xl mx-auto relative">
+        <div className="flex max-h-full justify-between w-11/12 max-w-screen-xl mx-auto relative items-center">
           <div className="logo max-h-full">
             <img
               className="logo max-h-full h-20 w-20"
@@ -21,7 +23,17 @@ class Header extends Component {
               alt="Cowabunga 411 logo with ocean waves"
             />
           </div>
-          <nav className=" items-center absolute top-full right-0 bg-red-300">
+          <div
+            className="nav-toggle md:hidden cursor-pointer text-brown hover:text-gray-light font-semibold transition-colors"
+            onClick={toggleNavBar}
+          >
+            Menu
+          </div>
+          <nav
+            className={`md:flex items-center absolute md:relative top-full left-0 right-0 bg-white p-4 transform md:transform-none ${
+              menuVisible ? "  " : "scale-y-0"
+            } transition duration-150 ease-in-out origin-top`}
+          >
             <StyledNavLink to="/">Home</StyledNavLink>
             <StyledNavLink to="/aboutus">About Us</StyledNavLink>
             {logged_in && (
@@ -34,7 +46,7 @@ class Header extends Component {
                   Create a collection
                 </StyledNavLink>
                 <a
-                  className="text-brown hover:text-gray-light font-semibold transition-colors"
+                  className="text-brown hover:text-gray-light font-semibold transition-colors md:pl-4"
                   href={sign_out_route}
                 >
                   Sign Out
@@ -44,7 +56,7 @@ class Header extends Component {
             <br />
             {!logged_in && (
               <a
-                className="text-brown hover:text-gray-light font-semibold transition-colors"
+                className="text-brown hover:text-gray-light font-semibold transition-colors md:pl-4"
                 href={sign_in_route}
               >
                 Sign In

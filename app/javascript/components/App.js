@@ -23,7 +23,8 @@ class App extends Component {
     super(props)
     this.state = {
       collections: [],
-      surfSpots: []
+      surfSpots: [],
+      menuVisible: false,
     }
 
   }
@@ -33,6 +34,13 @@ class App extends Component {
     if (this.props.logged_in) this.readCollections() 
     this.readSpots()
   }
+
+  toggleNavBar = () =>{
+    const currentVisibility = this.state.menuVisible
+    console.log("navbar was visible: ",currentVisibility)
+    this.setState({menuVisible: !currentVisibility})
+  }
+
 
   // should we have a catch block for potential errors?
   readCollections = async () => {
@@ -125,6 +133,8 @@ class App extends Component {
           sign_in_route={sign_in_route}
           sign_out_route={sign_out_route}
           current_user={current_user}
+          toggleNavBar = {this.toggleNavBar}
+          menuVisible = {this.state.menuVisible}
         />
         <main className="pt-24 min-h-screen">
           <Switch>
