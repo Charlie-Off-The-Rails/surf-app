@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import surfer from "../assets/surfer.jpeg"
+import homepage from "../assets/homepage.png";
 
 class Home extends Component {
   render() {
     return (
       <>
-        <div className="flex flex-wrap justify-center pb-10 pt-3">
-          <h1>Welcome to Cowabunga 411</h1>
-          <p>
-            We take the guesswork out of surfing so you can do more of what you
-            love.
-          </p>
-          <img src={surfer} alt="" />
+        <div>
+          <img
+            className="object-cover w-full max-w-full h-full max-h-full"
+            src={homepage}
+            alt="Welcome homepage"
+          />
         </div>
       </>
-    )
+    );
   }
 }
 
