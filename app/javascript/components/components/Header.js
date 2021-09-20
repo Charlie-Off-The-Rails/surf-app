@@ -11,6 +11,7 @@ class Header extends Component {
       sign_out_route,
       current_user,
       toggleNavBar,
+      closeNavBar,
       menuVisible,
     } = this.props
     return (
@@ -34,15 +35,21 @@ class Header extends Component {
               menuVisible ? "  " : "scale-y-0"
             } transition duration-150 ease-in-out origin-top`}
           >
-            <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/aboutus">About Us</StyledNavLink>
+            <StyledNavLink onClick={closeNavBar} to="/">
+              Home
+            </StyledNavLink>
+            <StyledNavLink onClick={closeNavBar} to="/aboutus">
+              About Us
+            </StyledNavLink>
             {logged_in && (
               <>
-                <StyledNavLink to="/surfspotindex">Surf Spots</StyledNavLink>
-                <StyledNavLink to="/mycollectionsindex">
+                <StyledNavLink onClick={closeNavBar} to="/surfspotindex">
+                  Surf Spots
+                </StyledNavLink>
+                <StyledNavLink onClick={closeNavBar} to="/mycollectionsindex">
                   My Collections
                 </StyledNavLink>
-                <StyledNavLink to="/collectionnew">
+                <StyledNavLink onClick={closeNavBar} to="/collectionnew">
                   Create a collection
                 </StyledNavLink>
                 <a

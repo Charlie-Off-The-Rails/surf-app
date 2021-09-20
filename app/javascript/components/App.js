@@ -26,21 +26,22 @@ class App extends Component {
       surfSpots: [],
       menuVisible: false,
     }
-
   }
 
   // was getting an unexpected token error.
   componentDidMount() {
-    if (this.props.logged_in) this.readCollections() 
+    if (this.props.logged_in) this.readCollections()
     this.readSpots()
   }
 
-  toggleNavBar = () =>{
+  toggleNavBar = () => {
     const currentVisibility = this.state.menuVisible
-    console.log("navbar was visible: ",currentVisibility)
-    this.setState({menuVisible: !currentVisibility})
+    this.setState({ menuVisible: !currentVisibility })
   }
 
+  closeNavBar = () => {
+    this.setState({ menuVisible: false })
+  }
 
   // should we have a catch block for potential errors?
   readCollections = async () => {
@@ -66,7 +67,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST"
+      method: "POST",
     })
     await response.json()
     this.readCollections()
@@ -75,29 +76,27 @@ class App extends Component {
   createCollectionSpot = async (collectionId, spotId) => {
     console.log("collection id and spot id", collectionId, spotId)
     const response = await fetch("/collection_spots", {
-      body: JSON.stringify(
-        {
+      body: JSON.stringify({
         collection_id: collectionId,
-        spot_id: spotId
-      }
-      ),
+        spot_id: spotId,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST"
+      method: "POST",
     })
     await response.json()
     this.readCollections()
   }
 
-  updateCollection =  async (editCollection, id) => {
+  updateCollection = async (editCollection, id) => {
     console.log("this is the editCollection!")
     const response = await fetch(`/collections/${id}`, {
       body: JSON.stringify(editCollection),
       headers: {
         "Content-Type": "application/json",
       },
-      method: "PATCH"
+      method: "PATCH",
     })
     await response.json()
     this.readCollections()
@@ -109,12 +108,10 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      method: "DELETE"
+      method: "DELETE",
     })
     this.readCollections()
   }
-
-
 
   render() {
     const {
@@ -123,7 +120,7 @@ class App extends Component {
       sign_in_route,
       sign_out_route,
       current_user,
-      super_secret_api_key
+      super_secret_api_key,
     } = this.props
     return (
       <Router>
@@ -133,8 +130,9 @@ class App extends Component {
           sign_in_route={sign_in_route}
           sign_out_route={sign_out_route}
           current_user={current_user}
-          toggleNavBar = {this.toggleNavBar}
-          menuVisible = {this.state.menuVisible}
+          toggleNavBar={this.toggleNavBar}
+          closeNavBar={this.closeNavBar}
+          menuVisible={this.state.menuVisible}
         />
         <main className="pt-24 min-h-screen">
           <Switch>
