@@ -10,7 +10,6 @@ class SurfSpotIndex extends Component {
     return (
       <>
         <StyledPageTitle>Surf Spots</StyledPageTitle>
-        <br />
         <CardFormat>
           {surfSpots &&
             surfSpots.map((surfSpot) => {
@@ -23,12 +22,11 @@ class SurfSpotIndex extends Component {
                   key={surfSpot.id}
                   super_secret_api_key={super_secret_api_key}
                 />
-              );
+              )
             })}
         </CardFormat>
-        
       </>
-    );
+    )
   }
 }
 

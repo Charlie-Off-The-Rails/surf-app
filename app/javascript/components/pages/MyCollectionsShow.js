@@ -18,7 +18,6 @@ class MyCollectionsShow extends Component {
     const { collection } = this.props;
     return (
       <>
-        <br />
         <CardFormat>
           {collection && (
             <CardStyle>
@@ -42,7 +41,7 @@ class MyCollectionsShow extends Component {
           )}
         </CardFormat>
       </>
-    );
+    )
   }
 }
 

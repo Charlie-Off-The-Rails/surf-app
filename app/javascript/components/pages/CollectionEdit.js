@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CollectionForm from "../components/CollectionForm";
+import StyledPageTitle from "../components/StyledPageTitle"
 
 class CollectionEdit extends Component {
   constructor(props) {
@@ -31,15 +32,16 @@ class CollectionEdit extends Component {
   render() {
     return (
       <>
-        <br />
+        <StyledPageTitle>Edit your Collection</StyledPageTitle>
         <CollectionForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           collectionInfo={this.state.form}
           submitted={this.state.submitted}
+          title={this.state.form.name}
         />
       </>
-    );
+    )
   }
 }
 

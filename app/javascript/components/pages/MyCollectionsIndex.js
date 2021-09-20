@@ -13,7 +13,6 @@ class MyCollectionIndex extends Component {
     return (
       <>
         <StyledPageTitle>My collections</StyledPageTitle>
-        <br />
         <CardFormat>
           {collections?.map((collection) => {
             return (
@@ -35,15 +34,15 @@ class MyCollectionIndex extends Component {
                   <br />
                   <h2>Spots:</h2>
                   {collection?.spots.map((spot) => {
-                    return <p key={spot.id}> {`${spot.name}`} </p>;
+                    return <p key={spot.id}> {`${spot.name}`} </p>
                   })}
                 </ul>
               </CardStyle>
-            );
+            )
           })}
         </CardFormat>
       </>
-    );
+    )
   }
 }
 
