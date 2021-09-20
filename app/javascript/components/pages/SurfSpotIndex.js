@@ -6,7 +6,7 @@ import SpotCard from "../components/SpotCard";
 
 class SurfSpotIndex extends Component {
   render() {
-    const { surfSpots, collections, createCollectionSpot, super_secret_api_key } = this.props;
+    const { surfSpots, collections, createCollectionSpot, super_secret_api_key, weatherSurfData } = this.props;
     return (
       <>
         <StyledPageTitle>Surf Spots</StyledPageTitle>
@@ -16,6 +16,7 @@ class SurfSpotIndex extends Component {
             surfSpots.map((surfSpot) => {
               return (
                 <SpotCard 
+                  spotData={weatherSurfData[surfSpot.id]}
                   surfSpot={surfSpot} 
                   collections={collections}
                   createCollectionSpot={createCollectionSpot}

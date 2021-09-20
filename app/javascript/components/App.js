@@ -154,6 +154,7 @@ class App extends Component {
               path="/surfspotindex"
               render={() => (
                 <SurfSpotIndex
+                  weatherSurfData={this.state.weatherSurfData}
                   surfSpots={this.state.surfSpots}
                   collections={this.state.collections}
                   createCollectionSpot={this.createCollectionSpot}

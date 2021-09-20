@@ -6,42 +6,15 @@ import StyledCardDetails from "../components/StyledCardDetails";
 
 class SpotCard extends Component {
 
-    constructor(){
-        super()
-        this.state = {
-            collectionId: '',
-            swellDir: '',
-            windDir: '',
-            swellHeight: ''
-        }
-    }
-
     handleChange = (e) => {
-        console.log("handleChange is doing this", e.target.value)
-        this.setState({collectionId: e.target.value})
-    }
-
-    getWeatherData = async (latitude, longitude) => {
-      const api_key = this.props.super_secret_api_key
-      console.log(api_key)
-      const response = await fetch(`https://api.worldweatheronline.com/premium/v1/marine.ashx?key=${api_key}&q=${latitude},${longitude}&format=json&tp=24&tide=yes`)
-
-      const result = await response.json()
-      const weatherData = result.data.weather[0].hourly[0]
-      // this.setState({swellDir: weatherData.swellDir16Point})
-      // this.setState({windDir: weatherData.winddir16Point})
-      console.log()
-      console.log(result)
-
-      return result
-    }
-
-    componentDidMount = () => {
-    this.getWeatherData(this.props.surfSpot.latitude, this.props.surfSpot.longitude)
+      console.log("handleChange is doing this", e.target.value)
+      this.setState({collectionId: e.target.value})
     }
 
     render() {
-        const { surfSpot, collections, createCollectionSpot } = this.props;
+        const { surfSpot, collections, createCollectionSpot, spotData } = this.props;
+        console.log("spotData:", spotData)
+        console.log("surfSpot:", surfSpot)
         return (
             <div>
                 <CardStyle key={surfSpot.id}>
@@ -51,10 +24,11 @@ class SpotCard extends Component {
                     </Link>
                     <StyledCardDetails>
                       {surfSpot.description}
-                      <p> Swell Direction: {this.state.swellDir} </p>
-                      <p>Wind Direction: {this.state.windDir} </p>
+                      <p className={surfSpot.swellDir === spotData.swellDir ? "text-green-400" : ""}>Ideal Swell Direction: {surfSpot.swell_direction} </p>
+                      <p>Current Swell Direction: {spotData.swellDir}</p>
+                      <p>Ideal Wind Direction: {surfSpot.windDir} </p>
                     </StyledCardDetails>
-                    <select onChange={this.handleChange} value={this.state.collectionId}>
+                    <select onChange={this.handleChange} value={surfSpot.collectionId}>
                         <option value="" disabled>
                               Select your Collection
                         </option>
