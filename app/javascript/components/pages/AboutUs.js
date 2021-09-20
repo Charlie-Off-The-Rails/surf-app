@@ -19,7 +19,7 @@ class AboutUs extends Component {
                 alt="Alfonso Martinez"
               />
             </div>
-            <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+            <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
               <blockquote>
                 <p className="font-semibold">
                   Alfonso is a web developer based in Southern California. He's
@@ -75,7 +75,7 @@ class AboutUs extends Component {
                 alt="Todd Comte"
               />
             </div>
-            <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+            <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
               <blockquote>
                 <p className="font-semibold">
                   Hard-working, self driven, Junior web developer looking to

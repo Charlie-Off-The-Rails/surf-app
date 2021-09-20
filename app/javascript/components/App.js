@@ -163,20 +163,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
 
-            {logged_in && (
-            <Route
-              path="/surfspotindex"
-              render={() => (
-                <SurfSpotIndex
-                  weatherSurfData={this.state.weatherSurfData}
-                  surfSpots={this.state.surfSpots}
-                  collections={this.state.collections}
-                  createCollectionSpot={this.createCollectionSpot}
-                  super_secret_api_key={super_secret_api_key}
-                />
-              )}
-            />
-          )}
+            
+          
+          <Route
               path="/surfspotshow/:id"
               render={(props) => {
                 const id = props.match.params.id
@@ -233,6 +222,21 @@ class App extends Component {
                 }}
               />
             )}
+
+          {logged_in && (
+            <Route
+              path="/surfspotindex"
+              render={() => (
+                <SurfSpotIndex
+                  weatherSurfData={this.state.weatherSurfData}
+                  surfSpots={this.state.surfSpots}
+                  collections={this.state.collections}
+                  createCollectionSpot={this.createCollectionSpot}
+                  super_secret_api_key={super_secret_api_key}
+                />
+              )}
+            />
+          )}
 
             <Route
               path="/mycollectionsshow/:id"
