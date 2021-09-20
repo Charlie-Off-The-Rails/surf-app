@@ -44,7 +44,7 @@ spot_attributes = [
             latitude: 32.865747, 
             longitude: -117.255225, 
             wind_direction: ["E", "SE", "S"], 
-            swell_direction: ["W", "NW"], 
+            swell_direction: ["WSW", "NW"], 
             surf_height_min: 3.0, 
             surf_height_max: 8.0,
             tide: 'low'

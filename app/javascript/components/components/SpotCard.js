@@ -15,6 +15,8 @@ class SpotCard extends Component {
         const { surfSpot, collections, createCollectionSpot, spotData } = this.props;
         console.log("spotData:", spotData)
         console.log("surfSpot:", surfSpot)
+        console.log("swell direction:", surfSpot.swell_direction)
+        console.log("type of direction:", typeof surfSpot.swell_direction)
         return (
             <div>
                 <CardStyle key={surfSpot.id}>
@@ -24,9 +26,8 @@ class SpotCard extends Component {
                     </Link>
                     <StyledCardDetails>
                       {surfSpot.description}
-                      <p className={surfSpot.swellDir === spotData.swellDir ? "text-green-400" : ""}>Ideal Swell Direction: {surfSpot.swell_direction} </p>
-                      <p>Current Swell Direction: {spotData.swellDir}</p>
-                      <p>Ideal Wind Direction: {surfSpot.windDir} </p>
+                      <p className={surfSpot.swell_direction.includes(spotData.swellDir) ? "text-green-400" : ""}>Current Swell Direction: {spotData.swellDir} </p>
+                      <p className={surfSpot.wind_direction.includes(spotData.windDir) ? "text-green-400" : ""}>Current Wind Direction: {spotData.windDir} </p>
                     </StyledCardDetails>
                     <select onChange={this.handleChange} value={surfSpot.collectionId}>
                         <option value="" disabled>
