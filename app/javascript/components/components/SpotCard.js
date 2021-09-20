@@ -26,9 +26,6 @@ class SpotCard extends Component {
       console.log(api_key)
       const response = await fetch(`https://api.worldweatheronline.com/premium/v1/marine.ashx?key=${api_key}&q=${latitude},${longitude}&format=json&tp=24&tide=yes`)
 
-
-      
-
       const result = await response.json()
       const weatherData = result.data.weather[0].hourly[0]
       // this.setState({swellDir: weatherData.swellDir16Point})

@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       collections: [],
       surfSpots: [],
-      weatherData: {},
+      weatherSurfData: {},
     };
   }
 
@@ -41,26 +41,33 @@ class App extends Component {
     const response = await fetch("/spots");
     const result = await response.json();
     this.setState({ surfSpots: result });
-    var surfData = {};
     for (let i = 0; i < result.length; i++) {
       //loop through each surfSpot to get ID, lat, and long
-      var surfId = result[i].id
-      var latitude = result[i].latitude
-      var longitude = result[i].longitude
+      const surfId = result[i].id
+      const {weatherSurfData} = this.state;
+      const latitude = result[i].latitude
+      const longitude = result[i].longitude
       
       //make fetch request
       const api_key = this.props.super_secret_api_key;
       const response = await fetch(
         `https://api.worldweatheronline.com/premium/v1/marine.ashx?key=${api_key}&q=${latitude},${longitude}&format=json&tp=24&tide=yes`
       );
-
       const fetchResult = await response.json();
       const weatherData = fetchResult.data.weather[0].hourly[0];
-      var swellDir = weatherData.swellDir16Point
-      var windDir = weatherData.winddir16Point
+      const swellDir = weatherData.swellDir16Point
+      const windDir = weatherData.winddir16Point
+      const swellHeight = weatherData.swellHeight_ft
       //store variables in an object
+      const fetchData = {
+        swellDir: swellDir,
+        windDir: windDir,
+        swellHeight: swellHeight
+      }
+      weatherSurfData[surfId] = fetchData
       //add a key on surfData with the ID of our spot and give it the value of the variables that we stored in the object
       //surfData[exampleSpotId] = {swellDir: blah, windDir: bleh}
+      this.setState({weatherSurfData: weatherSurfData})
     }
   };
 
@@ -129,6 +136,7 @@ class App extends Component {
       current_user,
       super_secret_api_key,
     } = this.props;
+    console.log(this.state.weatherSurfData)
     return (
       <Router>
         <Header
