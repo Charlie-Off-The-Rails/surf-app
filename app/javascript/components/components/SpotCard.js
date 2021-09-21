@@ -12,8 +12,6 @@ class SpotCard extends Component {
 
     render() {
         const { surfSpot, collections, createCollectionSpot, spotData } = this.props;
-        console.log("SurfSpot", surfSpot)
-        console.log("SurfSpot swell direction", surfSpot.swell_direction)
         return (
             <div>
               { spotData && 
