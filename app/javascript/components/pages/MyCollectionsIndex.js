@@ -9,7 +9,6 @@ import StyledButton from "../components/StyledButton";
 class MyCollectionIndex extends Component {
   render() {
     const { collections } = this.props;
-    console.log(collections);
     return (
       <>
         <StyledPageTitle>My collections</StyledPageTitle>

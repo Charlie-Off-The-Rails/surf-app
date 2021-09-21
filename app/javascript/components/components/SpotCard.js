@@ -7,26 +7,23 @@ import StyledCardDetails from "../components/StyledCardDetails";
 class SpotCard extends Component {
 
     handleChange = (e) => {
-      console.log("handleChange is doing this", e.target.value)
       this.setState({collectionId: e.target.value})
     }
 
     render() {
         const { surfSpot, collections, createCollectionSpot, spotData } = this.props;
-        console.log("spotData:", spotData)
-        console.log("surfSpot:", surfSpot)
         return (
             <div>
+              { spotData && 
                 <CardStyle key={surfSpot.id}>
                   <div>
                     <Link to={`/surfspotshow/${surfSpot.id}`}>
                       <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
                     </Link>
                     <StyledCardDetails>
-                      {surfSpot.description}
-                      <p className={surfSpot.swellDir === spotData.swellDir ? "text-green-400" : ""}>Ideal Swell Direction: {surfSpot.swell_direction} </p>
-                      <p>Current Swell Direction: {spotData.swellDir}</p>
-                      <p>Ideal Wind Direction: {surfSpot.windDir} </p>
+                      <p className={surfSpot.swell_direction.includes(spotData.swellDir) ? "text-green-400" : ""}>Current Swell Direction: {spotData.swellDir} </p>
+                      <p className={surfSpot.wind_direction.includes(spotData.windDir) ? "text-green-400" : ""}>Current Wind Direction: {spotData.windDir} </p>
+                      <p>Current Swell Height: {spotData.swellHeight} </p>
                     </StyledCardDetails>
                     <select onChange={this.handleChange} value={surfSpot.collectionId}>
                         <option value="" disabled>
@@ -45,6 +42,7 @@ class SpotCard extends Component {
                     <button onClick={() => createCollectionSpot(this.state.collectionId, surfSpot.id)}>+</button>
                   </div>
                 </CardStyle>
+              }
             </div>
         )
     }

@@ -8,17 +8,30 @@ import StyledButton from "../components/StyledButton";
 
 class SurfSpotShow extends Component {
   render() {
-    const { surfSpot } = this.props;
+    const { surfSpot, spotData } = this.props;
     return (
       <>
         <div className="pt-10">
           <CardFormat>
             <CardStyle>
               <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
-              <StyledCardDetails>{surfSpot.description}</StyledCardDetails>
-              <StyledCardDetails>{`Bottom: ${surfSpot.bottom}`}</StyledCardDetails>
-              <StyledCardDetails>{`Tide: ${surfSpot.tide}`}</StyledCardDetails>
-              <StyledCardDetails>{`Swell Direction: ${surfSpot.bottom} degrees`}</StyledCardDetails>
+                <StyledCardDetails>
+                  <p className="mx-auto">{surfSpot.description}</p>
+                  <p className="mx-auto">{`Bottom: ${surfSpot.bottom}`}</p>
+                  <p className="mx-auto">{`Tide: ${surfSpot.tide}`}</p>
+                  <p className="mx-auto">{`Ideal Swell Direction(s): ${surfSpot.swell_direction} `}</p>
+                  <p className="mx-auto">{`Ideal Wind Direction(s): ${surfSpot.wind_direction}`}</p>
+              {spotData && (
+                <>
+                  <p className={surfSpot.swell_direction.includes(spotData.swellDir) ? "text-green-400 mx-auto" : "mx-auto"}>Current Swell Direction: {spotData.swellDir}</p>
+                  <p className={surfSpot.wind_direction.includes(spotData.windDir) ? "text-green-400 mx-auto" : "mx-auto"}>Current Wind Direction: {spotData.windDir}</p>
+                  <p className="mx-auto">Current Swell Height: {spotData.swellHeight} ft</p>
+                  <p className="mx-auto">Current Surf Height: {spotData.surfHeight} ft</p>
+                  <p className="mx-auto">Current Water Temperature: {spotData.waterTemp}°F</p>
+                </>                
+              )}
+                </StyledCardDetails>
+
               <Link to="/surfspotindex">
                 <StyledButton>Back</StyledButton>
               </Link>
