@@ -13,8 +13,4 @@ describe("When header renders", () => {
     })
 }) 
 
-//  Aaron said we can use spec testing here
-// describe("When logged in", () => {
-//     it("displays `my collections` and `create a collection` buttons", () => {
-//     })
-// })
+

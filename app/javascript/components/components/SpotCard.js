@@ -21,8 +21,8 @@ class SpotCard extends Component {
                       <StyledCardTitle>{surfSpot.name}</StyledCardTitle>
                     </Link>
                     <StyledCardDetails>
-                      <p className={surfSpot.swell_direction.includes(spotData.swellDir) ? "text-green-400" : ""}>Current Swell Direction: {spotData.swellDir} </p>
-                      <p className={surfSpot.wind_direction.includes(spotData.windDir) ? "text-green-400" : ""}>Current Wind Direction: {spotData.windDir} </p>
+                      <p className={surfSpot.swell_direction?.includes(spotData.swellDir) ? "text-green-400" : ""}>Current Swell Direction: {spotData.swellDir} </p>
+                      <p className={surfSpot.wind_direction?.includes(spotData.windDir) ? "text-green-400" : ""}>Current Wind Direction: {spotData.windDir} </p>
                       <p>Current Swell Height: {spotData.swellHeight} </p>
                     </StyledCardDetails>
                     <select onChange={this.handleChange} value={surfSpot.collectionId}>
