@@ -8,7 +8,7 @@ Enzyme.configure({adapter: new Adapter()})
 describe("When MyCollectionsIndex renders", () => {
     it("displays a p tag with code", () => {
         const myCollectionsIndex = shallow(<MyCollectionsIndex/>)
-        const renderPTag = myCollectionsIndex.find("p")
-        expect(renderPTag.length).toEqual(1)
+        const renderCardFormatTag = myCollectionsIndex.find("CardFormat")
+        expect(renderCardFormatTag.length).toEqual(1)
     })
 })

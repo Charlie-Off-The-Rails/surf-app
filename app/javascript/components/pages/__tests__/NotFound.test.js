@@ -6,9 +6,9 @@ import NotFound from '../NotFound'
 Enzyme.configure({adapter: new Adapter()})
 
 describe("When NotFound renders", () => {
-    it("displays a p tag with code", () => {
+    it("displays an image", () => {
         const notFound = shallow(<NotFound/>)
-        const renderPTag = notFound.find("p")
-        expect(renderPTag.length).toEqual(1)
+        const renderImageTag = notFound.find("img")
+        expect(renderImageTag.length).toEqual(1)
     })
 })

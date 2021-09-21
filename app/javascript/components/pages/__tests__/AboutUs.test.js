@@ -8,7 +8,7 @@ Enzyme.configure({adapter: new Adapter()})
 describe("When AboutUs renders", () => {
     it("displays a p tag with code", () => {
         const aboutUs = shallow(<AboutUs/>)
-        const renderPTag = aboutUs.find("p")
-        expect(renderPTag.length).toEqual(1)
+        const renderImgTag = aboutUs.find("img")
+        expect(renderImgTag.length).toEqual(4)
     })
 })

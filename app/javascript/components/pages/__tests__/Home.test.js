@@ -5,10 +5,10 @@ import Home from '../Home'
 
 Enzyme.configure({adapter: new Adapter()})
 
-describe("When Home renders", () => {
-    it("displays a p tag with code", () => {
+describe("when home renders", () => {
+    it("displays a SyledPageTitle component", () => {
         const home = shallow(<Home/>)
-        const renderPTag = home.find("p")
-        expect(renderPTag.length).toEqual(1)
+        const styledPageTitle = home.find("StyledPageTitle")
+        expect(styledPageTitle.length).toEqual(1)
     })
 })

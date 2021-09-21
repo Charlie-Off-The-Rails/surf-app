@@ -5,10 +5,11 @@ import MyCollectionsShow from '../MyCollectionsShow'
 
 Enzyme.configure({adapter: new Adapter()})
 
+
 describe("When MyCollectionsShow renders", () => {
-    it("displays a p tag with code", () => {
-        const myCollectionsShow = shallow(<MyCollectionsShow/>)
-        const renderPTag = myCollectionsShow.find("p")
-        expect(renderPTag.length).toEqual(1)
+    it("displays one CardStyle component", () => {
+        const collectionShow = shallow(<MyCollectionsShow/>)
+        const styledCardFormat = collectionShow.find("CardFormat")
+        expect(styledCardFormat.length).toEqual(1)
     })
 })
