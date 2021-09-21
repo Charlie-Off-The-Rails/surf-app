@@ -56,8 +56,8 @@ spot_attributes = [
             bottom: 'sand', 
             latitude: 32.79817, 
             longitude: -117.259056, 
-            wind_direction: ["E", "NE"], 
-            swell_direction: ["W", "NW", "SW"], 
+            wind_direction: ["E", "ENE", "ESE", "NE"], 
+            swell_direction: ["W", "NW", "SW", "WSW"], 
             surf_height_min: 2.0, 
             surf_height_max: 6.0,
             tide: 'low'
@@ -82,8 +82,8 @@ spot_attributes = [
             bottom: 'sand', 
             latitude: 32.683467, 
             longitude: -117.186886, 
-            wind_direction: ["NE"], 
-            swell_direction: ["S", "SW"], 
+            wind_direction: ["NE", "NNW",], 
+            swell_direction: ["S", "SW", "WSW"], 
             surf_height_min: 3.0, 
             surf_height_max: 6.0,
             tide: 'med'
@@ -109,7 +109,7 @@ spot_attributes = [
             latitude: 32.088172, 
             longitude: -116.884867, 
             wind_direction: ["NE"], 
-            swell_direction: ["W", "NW"], 
+            swell_direction: ["W", "NW", "WSW"], 
             surf_height_min: 3.0, 
             surf_height_max: 8.0,
             tide: 'high'

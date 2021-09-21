@@ -15,7 +15,7 @@ A react-in-rails surf app created to help surfers keep tabs on their favorite su
 ## Running This Project
 
 ### Live Version: 
-http://www.example.com
+[View the app here!](https://blooming-dawn-68083.herokuapp.com/)
 
 ### Running Locally:
 - Clone this project locally
