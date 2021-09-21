@@ -6,9 +6,9 @@ import SurfSpotShow from '../SurfSpotShow'
 Enzyme.configure({adapter: new Adapter()})
 
 describe("When SurfSpotShow renders", () => {
-    it("displays a p tag with code", () => {
-        const surfSpotShow = shallow(<SurfSpotShow/>)
-        const renderPTag = surfSpotShow.find("p")
-        expect(renderPTag.length).toEqual(1)
+    it("displays StyledCardTitle component", () => {
+        const surfSpotShow = shallow(<SurfSpotShow surfSpot={{name: "test"}}/>)
+        const styledCardTitle = surfSpotShow.find("StyledCardTitle")
+        expect(styledCardTitle.length).toEqual(1)
     })
 })

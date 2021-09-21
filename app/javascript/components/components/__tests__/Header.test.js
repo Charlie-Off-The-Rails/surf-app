@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import Header from '../Header'
+import StyledNavLink from '../StyledNavLink'
 
 Enzyme.configure({adapter: new Adapter()})
 
@@ -10,6 +11,11 @@ describe("When header renders", () => {
         const header = shallow(<Header/>)
         const renderHeaderTag = header.find("header")
         expect(renderHeaderTag.length).toEqual(1)
+    })
+    it("displays a image, logo", () => {
+        const header = shallow(<Header/>)
+        const imgTag = header.find("img")
+        expect(imgTag.length).toEqual(1)
     })
 }) 
 

@@ -5,10 +5,18 @@ import CollectionNew from '../CollectionNew'
 
 Enzyme.configure({adapter: new Adapter()})
 
-describe("When CollectionNew renders", () => {
-    it("displays a p tag with code", () => {
+describe("renders SyledPageTitle child component", () => {
+    it("displays SyledPageTitle component", () => {
         const collectionNew = shallow(<CollectionNew/>)
-        const renderPTag = collectionNew.find("p")
-        expect(renderPTag.length).toEqual(1)
+        const styledPage = collectionNew.find("StyledPageTitle")
+        expect(styledPage.length).toEqual(1)
+    })
+})
+
+describe("renders CollectionForm child component", () => {
+    it("displays CollectionForm component", () => {
+        const collectionNew = shallow(<CollectionNew/>)
+        const collectionForm = collectionNew.find("CollectionForm")
+        expect(collectionForm.length).toEqual(1)
     })
 })
