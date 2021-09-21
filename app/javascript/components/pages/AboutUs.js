@@ -16,7 +16,7 @@ class AboutUs extends Component {
               <img
                 className="object-cover w-full max-w-full h-full max-h-full rounded-full"
                 src={alfonso}
-                alt="Alfonso Martinez"
+                alt="Photo of Alfonso Martinez"
               />
             </div>
             <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
@@ -43,13 +43,13 @@ class AboutUs extends Component {
               <img
                 className="object-cover w-full h-full max-w-full max-h-full rounded-full"
                 src={marcelo}
-                alt="Marcelo Azevedo"
+                alt="Photo of Marcelo Azevedo"
               />
             </div>
             <div className="pt-6 md:p-8 text-center md:text-right space-y-4">
               <blockquote>
                 <p className="font-semibold">
-                  I am a software developer based in San Diego, CA. I am
+                  "I am a software developer based in San Diego, CA. I am
                   currently attending the LEARN Academy full-stack software
                   development boot camp where we are working on multiple
                   projects using JavaScript, React, Ruby, and Ruby on Rails. I
@@ -58,7 +58,7 @@ class AboutUs extends Component {
                   analyzing, and reporting on scientific data.Today as a
                   software developer, I strive to bring creative projects to
                   life and to resolve challenging tasks with process
-                  improvements and innovative solutions.
+                  improvements and innovative solutions."
                 </p>
               </blockquote>
               <figcaption className="font-medium">
@@ -72,16 +72,13 @@ class AboutUs extends Component {
               <img
                 className="h-full w-full object-cover max-w-full max-h-full rounded-full"
                 src={todd}
-                alt="Todd Comte"
+                alt="Photo of Todd Comte"
               />
             </div>
             <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
               <blockquote>
                 <p className="font-semibold">
-                  Hard-working, self driven, Junior web developer looking to
-                  improve any team or company. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua.
+                  A junior web developer at Off The Rails LLC. The team that brought you the awesome app Cowabunga Surf. As a Product Manager he has demonstrated the ability to work with HTML, CSS JavaScript, React, Ruby on Rails and Tailwind CSS. He has exhibited a history of working in the military industry. Skilled in Government, Conflict Resolution, Operational Planning, Team Building, Public Speaking and Social Services Professional.
                 </p>
               </blockquote>
               <figcaption className="font-medium">
@@ -95,17 +92,13 @@ class AboutUs extends Component {
               <img
                 className="object-cover w-full h-full max-w-full max-h-full rounded-full"
                 src={yarenny}
-                alt=""
+                alt="Photo of Yarenny Baez"
               />
             </div>
             <div className="pt-6 md:p-8 text-center md:text-right space-y-4 flex-1">
               <blockquote>
                 <p className="font-semibold">
-                  Analytical full-stack web developer with a passion for
-                  building creative and functional web applications for those to
-                  enjoy. Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
+                Analytical full-stack web developer with a passion for building creative and functional web applications for those to enjoy. Skilled communicator with experience in pair programming/mob programming. Open minded and eager to learn and grow through new opportunities. "Working on Cowabunga 411 has been a great learning experience, I found a passion for UX/UI design and I look forward to seeing where it takes me!"
                 </p>
               </blockquote>
               <figcaption className="font-medium">
