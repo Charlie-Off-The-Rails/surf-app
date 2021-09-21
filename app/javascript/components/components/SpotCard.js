@@ -46,6 +46,7 @@ class SpotCard extends Component {
                           value={collection.id}
                         >
                           {collection.name}
+
                         </option>
                       )
                     })}

@@ -28,7 +28,6 @@ class CollectionNew extends Component {
   };
 
   render() {
-    const { name, description, priority } = this.state.form;
     return (
       <>
         <StyledPageTitle>Create a Collection</StyledPageTitle>
