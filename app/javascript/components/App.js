@@ -68,11 +68,15 @@ class App extends Component {
       const swellDir = weatherData.swellDir16Point
       const windDir = weatherData.winddir16Point
       const swellHeight = weatherData.swellHeight_ft
+      const surfHeight = weatherData.sigHeight_m*0.3
+      const waterTemp = weatherData.waterTemp_F
       //store variables in an object
       const fetchData = {
         swellDir: swellDir,
         windDir: windDir,
-        swellHeight: swellHeight
+        swellHeight: swellHeight,
+        surfHeight: surfHeight,
+        waterTemp: waterTemp
       }
       weatherSurfData[surfId] = fetchData
       //add a key on surfData with the ID of our spot and give it the value of the variables that we stored in the object
@@ -84,8 +88,6 @@ class App extends Component {
   // creating a new collection
   createCollection = async (newCollection) => {
     newCollection.user_id = this.props.current_user.id;
-    console.log("new collection before:", newCollection);
-    console.log("new colleciton after:", JSON.stringify(newCollection));
     const response = await fetch("/collections", {
       body: JSON.stringify(newCollection),
       headers: {
@@ -99,7 +101,6 @@ class App extends Component {
 
 
   createCollectionSpot = async (collectionId, spotId) => {
-    console.log("collection id and spot id", collectionId, spotId);
     const response = await fetch("/collection_spots", {
       body: JSON.stringify({
         collection_id: collectionId,
@@ -115,7 +116,6 @@ class App extends Component {
   }
 
   updateCollection = async (editCollection, id) => {
-    console.log("this is the editCollection!")
     const response = await fetch(`/collections/${id}`, {
       body: JSON.stringify(editCollection),
       headers: {
@@ -128,7 +128,6 @@ class App extends Component {
   }
 
   deleteCollection = async (id) => {
-    console.log("delete collection invoke!");
     const response = await fetch(`/collections/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -172,7 +171,7 @@ class App extends Component {
                 const surfSpot = this.state.surfSpots.find(
                   (spot) => spot.id === +id
                 )
-                return <SurfSpotShow surfSpot={surfSpot} />
+                return <SurfSpotShow surfSpot={surfSpot} spotData={this.state.weatherSurfData[id]} />
               }}
             />
             <Route

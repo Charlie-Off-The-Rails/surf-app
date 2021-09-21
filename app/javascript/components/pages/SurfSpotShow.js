@@ -8,7 +8,7 @@ import StyledButton from "../components/StyledButton";
 
 class SurfSpotShow extends Component {
   render() {
-    const { surfSpot } = this.props;
+    const { surfSpot, spotData } = this.props;
     return (
       <>
         <div className="pt-10">
@@ -18,7 +18,18 @@ class SurfSpotShow extends Component {
               <StyledCardDetails>{surfSpot.description}</StyledCardDetails>
               <StyledCardDetails>{`Bottom: ${surfSpot.bottom}`}</StyledCardDetails>
               <StyledCardDetails>{`Tide: ${surfSpot.tide}`}</StyledCardDetails>
-              <StyledCardDetails>{`Swell Direction: ${surfSpot.bottom} degrees`}</StyledCardDetails>
+              <StyledCardDetails>{`Ideal Swell Direction(s): ${surfSpot.swell_direction} `}</StyledCardDetails>
+              <StyledCardDetails>{`Ideal Wind Direction(s): ${surfSpot.wind_direction}`}</StyledCardDetails>
+              {spotData && (
+                <>
+                  <StyledCardDetails>Current Swell Direction: {spotData.swellDir}</StyledCardDetails>
+                  <StyledCardDetails>Current Wind Direction: {spotData.windDir}</StyledCardDetails>
+                  <StyledCardDetails>Current Swell Height: {spotData.swellHeight} ft</StyledCardDetails>
+                  <StyledCardDetails>Current Surf Height: {spotData.surfHeight} ft</StyledCardDetails>
+                  <StyledCardDetails>Current Water Temperature: {spotData.waterTemp}°F</StyledCardDetails>
+                </>
+              )}
+
               <Link to="/surfspotindex">
                 <StyledButton>Back</StyledButton>
               </Link>
