@@ -18,8 +18,8 @@ class MyCollectionsShow extends Component {
     const { collection } = this.props;
     return (
       <>
-        <CardFormat>
-          {collection && (
+        {collection && (
+          <div className="pt-10 w-11/12 max-w-screen-md mx-auto">
             <CardStyle>
               <StyledCardTitle>{collection.name}</StyledCardTitle>
               <StyledCardDetails>{collection.description}</StyledCardDetails>
@@ -38,8 +38,8 @@ class MyCollectionsShow extends Component {
                 </StyledButton>
               </Link>
             </CardStyle>
-          )}
-        </CardFormat>
+          </div>
+        )}
       </>
     )
   }
